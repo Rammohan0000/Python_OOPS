@@ -63,7 +63,37 @@ while True:
         continue
 print(f"{attempts} made so far") 
 
+#The For Loops in Python are a special type of loop statement that is used for sequential traversal.
 
+l1 = ["eat", "sleep", "repeat"]
+for count,ele in enumerate(l1):
+    print (count, ele)
+
+# start, stop and step 
+for x in range(2, 30, 3):
+  print(x) 
+    
+
+###nested-for####
+# Outer loop for rows (1 to 5)
+for i in range(1, 6):  
+    # Inner loop for columns (1 to 5)
+    for j in range(1, 6):  
+        # Print the product of i and j, formatted to align
+        print(f"{i * j:3}", end=" ")  
+    print()  # Move to the next line after each row
+
+#zip function
+fruits = ["apple", "banana", "cherry"]
+colors = ["red", "yellow", "green"]
+for fruit, color in zip(fruits, colors):
+    print(fruit, "is", color)    
+
+# for loop with logical confitions
+for letter in 'rammohan':
+    if letter == 'a' or letter == 'm':
+        continue
+    print('Current Letter :', letter)   
 
 
    
