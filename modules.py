@@ -1,0 +1,86 @@
+# Module is file containing Python code (functions, classes, and variables) that can be imported and reused in other Python scripts or modules
+#Encourages code reusability
+#Provides built-in functionality with standard modules (e.g., math, os, random).
+
+#save it with example_module.py
+def add(a,b):
+    return a + b
+
+person1 = {
+    "name":'john',
+    "age": 25,
+    "country":'USA'
+}
+
+#create a new python file, import the above python code using
+#import example_module
+#print(add(1,2))
+#we can access variables also
+#a = example_module.person1['age']
+#print(a)
+
+#renaming an module by using alias
+#import example_module as em
+#a = em.person1["name"]
+#print(a)
+
+#using *-> importing entire module
+from math import *
+print("Square root of 16:", sqrt(16))
+print("Factorial of 5:", factorial(5))
+print("GCD of 48 and 18:", gcd(48, 18))
+print("LCM of 4 and 5:", lcm(4, 5))
+print("2 raised to the power of 3:",pow(2, 3))
+print("Ceiling of 4.3:", ceil(4.3))
+print("Floor of 4.7:", floor(4.7))
+
+#random module->used to generate random numbers and perform random operations on sequences
+import random
+print("random float between 0 and 1: ", random.random())
+print("random integer between 1 and 10: ", random.randint(1,10))
+print("random number in range 0 to 100 (step of 10):", random.randrange(0, 100, 10))
+#random choice from sequence
+cities = ['vizag', 'hyd','bng','chennai','kochi']
+print("I want to visit: ", random.choice(cities))
+#shuffle a sequence
+cards = ['Ace', 'King', 'Queen', 'Jack']
+random.shuffle(cards)
+print("Shuffled cards:", cards)
+#simulating a rolling dice
+def roll_dice():
+    return random.randint(1,6)
+print("Dice roll result:", roll_dice())
+#Example: Lottery Number Generator
+def lottery_numbers():
+    # Generate 6 unique random numbers between 1 and 49
+    return sorted(random.sample(range(1, 50), 6))
+print("Lottery numbers:", lottery_numbers())
+#random password generator
+import string
+def generate_password(length):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    return ''.join(random.choices(characters, k=length))
+print("Random password:", generate_password(12))
+
+#platform module->access information about the underlying platform, such as the operating system, hardware, and Python version.
+# It is useful for debugging, compatibility checks, or logging system details.
+import platform
+print("System Name:", platform.system())
+print("Node Name:", platform.node())
+print("OS Release:", platform.release())
+print("OS Version:", platform.version())
+print("Processor:", platform.processor())
+print("Platform Information:", platform.platform())
+#using uname()
+info = platform.uname()
+print("System:", info.system)
+print("Node Name:", info.node)
+print("Release:", info.release)
+print("Version:", info.version)
+print("Machine:", info.machine)
+print("Processor:", info.processor)
+#checking compatibility
+if platform.system() == "Windows":
+    print("You are running on Windows!")
+else:
+    print("Not running on Windows.")
