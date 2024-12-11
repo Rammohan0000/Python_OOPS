@@ -84,3 +84,86 @@ if platform.system() == "Windows":
     print("You are running on Windows!")
 else:
     print("Not running on Windows.")
+
+# os module -> provides functions for interacting with the operating system
+# It allows you to perform tasks like file and directory management, process handling, environment variable access, and more.
+import os
+cwd = os.getcwd()
+print("Current Working Directory is: ", cwd)
+#list files in a directory
+files = os.listdir(".") #"." refers to the current directory
+print("Files:",files)
+#change current directory
+#os.chdir("/path/to/directory")
+#print("changed directory:",os.getcwd())
+#create a new directory
+os.mkdir("demo")
+print("directory created!")
+#removing directory
+os.rmdir("demo")
+print("directory removed")
+#creating nested directory
+os.makedirs("parent_folder/child_folder")
+print("nested directory created")
+#removing nested directory
+os.removedirs("parent_folder/child_folder")
+print("nested directory removed")
+#renaming a file or directory
+#os.rename("requirement.txt","requirements.txt")
+#print("File Renamed!")
+#check of path exists or not
+print(os.path.exists("lists.py"))
+#get file size
+size = os.path.getsize("dictionary.py")
+print("File Size: ", size, "bytes")
+#open a file or program
+os.startfile("pyats.py")
+#process management
+#1.Get Current Process ID
+pid = os.getpid()
+print("current process id is: ", pid)
+#get username of current process
+import getpass
+username = getpass.getuser()
+print("Username", username)
+#search for files with a specific extension
+directory = "."
+for file in os.listdir(directory):
+    if file.endswith('.py'):
+        print("text file:", file)
+
+#datetime module -> handling date and time-related operations.
+#from datetime import datetime, date, time, timedelta
+from datetime import *
+now = datetime.now()
+print("Year:", now.year)
+print("Month:", now.month)
+print("Day:", now.day)
+print("Hour:", now.hour)
+print("Minute:", now.minute)
+print("Second:", now.second)
+#custom format
+formatted_date = now.strftime("%m-%Y-%d %H:%M:%S")
+print("Formatted Date and Time:", formatted_date)
+now = datetime.now()
+#date arithmetic with timedelta
+future_date = now + timedelta(days=10)
+past_date = now - timedelta(days=10)
+print("Future Date:", future_date)
+print("Past Date:", past_date)
+
+#calender module
+import calendar
+print(calendar.month(2024,12))
+print(calendar.calendar(2024))
+#find next leap year
+current_year = 2024
+while not calendar.isleap(current_year):
+    current_year += 1
+print("Next Leap Year:", current_year)
+#get all fridays of a month
+year = 2024
+month = 12
+fridays = [day for week in calendar.monthcalendar(year, month) for day in week if week[calendar.FRIDAY] != 0]
+print("Fridays in December 2024:", fridays)
+
