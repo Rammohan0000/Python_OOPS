@@ -22,7 +22,7 @@ def fibonacci(n):
 for num in fibonacci(10):
     print(num)
 
-#ssimple example
+#ssmple example
 def my_generator():
     yield 1
     yield 2
@@ -32,3 +32,12 @@ print(next(gen))
 print(next(gen)) 
 print(next(gen))
 
+# counter using generator function
+def count_to_max(max):
+    count = 1
+    while count<= max:
+        yield count
+        count += 1
+counter = count_to_max(10)
+for num in counter:
+    print(num)       
