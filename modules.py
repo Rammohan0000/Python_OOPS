@@ -114,7 +114,7 @@ print("nested directory removed")
 #check of path exists or not
 print(os.path.exists("lists.py"))
 #get file size
-size = os.path.getsize("dictionary.py")
+size = os.path.getsize("modules.py")
 print("File Size: ", size, "bytes")
 #open a file or program
 os.startfile("pyats.py")

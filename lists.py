@@ -108,3 +108,7 @@ fruits = ['apple', 'banana', 'cherry', 'date']
 short_fruits = [fruit.upper() for fruit in fruits if len(fruit) <= 5]
 print(short_fruits) 
 
+list3 = [1,2,1,4,5,6,6,7,7,8]
+
+list4 = list(dict.fromkeys(list3))
+print(list4)
