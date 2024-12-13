@@ -84,3 +84,30 @@ print(str(car))
 #class statement cannot be empty , if it is need to empty use "pass" keyword
 class Cricket:
     pass
+
+# abstract methods -> declared in abstract class and must be implemented by subclasses
+# use @abstractmethod decorator from the abc module
+# Polymorphism allows us to handle different objects uniformly, improving code flexibility and simplicity.
+from abc import ABC, abstractmethod
+class Animal(ABC): #Abstract Base Class
+    @abstractmethod
+    def make_sound(self):
+        print("This is a generic animal sound") # default implementation
+class Dog(Animal):
+    def make_sound(self): # override with specific behavior
+        super().make_sound() # optionally call the default behavior
+        return "Bow!!Bow"
+class Cat(Animal):
+    def make_sound(self):  
+        return "Meow!!!"
+dog = Dog()    
+cat = Cat()
+print(dog.make_sound())
+print(cat.make_sound())
+          
+# Abstact class vs Inheritance
+#Abstract Class Use it when you have a common interface or behavior that all subclasses must implement.
+#Example: An abstract Shape class that requires all subclasses (Circle, Square, etc.) to implement an area() method.
+#Inheritance:
+#Use it when a subclass can naturally extend or reuse the functionality of the parent class.
+#Example: A Car class inheriting from a Vehicle class to reuse attributes like speed and methods like move().#

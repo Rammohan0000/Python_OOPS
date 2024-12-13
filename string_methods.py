@@ -1,3 +1,12 @@
+# strings are sequence of characters and immutable
+#string are stored in arrays of characters
+
+words = ["python", "is", "fun"]
+print(" ".join(words))
+
+char = "a"
+print(ord(char))
+
 class StringOperations:
     def __init__(self, input_string):
         self.input_string = input_string  # Encapsulating the string
