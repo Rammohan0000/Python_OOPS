@@ -39,10 +39,37 @@ try:
     print(dict['country'])
 except KeyError:
     print("key not found in the dictionary") 
-    
-              
 
+#6.FileNotFoundError -> file doesnt exist
+try:
+    with open("file.txt",'r') as file:
+        content = file.read()
+except FileNotFoundError:
+    print("file not found")                     
 
+#7. Attribute Error -> accessing attribute or method that doesnt exist on an object
+str ="hello"
+try:
+    str.append("world")
+except AttributeError:
+    print("string object has no method append")    
 
+# Multiple Exception Handling
+try:
+    number = int(input("Enter a number: "))
+    result = 10 / number
+except (ValueError, ZeroDivisionError) as e:
+    print(f"Error: {e}")
 
+#Else and Finally Blocks
+#Else block: Executes if no exception is raised
+#finally block: Always runs, with regardless of exceptions raised
+try:
+    x = 10 / 2  # No exception
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+else:
+    print("Division successful!")
+finally:
+    print("This will always execute.")
 
