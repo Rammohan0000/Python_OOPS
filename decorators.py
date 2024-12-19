@@ -7,6 +7,5 @@ def inner_div(func):
 @inner_div
 def division(a,b):
     return a/b
-
 result = division(2,10)
 print(result)    
