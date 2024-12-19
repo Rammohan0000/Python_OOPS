@@ -77,4 +77,19 @@ if os.path.exists("demofile.txt"):
 else:
   print("The file does not exist")
 
-  
+
+#  Python handles binary files using file modes like 'rb' (read binary) and 'wb'
+# Writing binary data to a file
+data = b"This is binary data.\nSecond line of binary data."
+with open('binary_example.bin', 'wb') as file:
+    file.write(data)
+
+# Reading binary data from a file
+with open('binary_example.bin', 'rb') as file:
+    content = file.read()
+    print(content)  
+# copying binary files
+with open('source_image.jpg', 'rb') as src_file:
+    with open('destination_image.jpg', 'wb') as dest_file:
+        dest_file.write(src_file.read())
+print("Image copied successfully!")
