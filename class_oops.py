@@ -9,7 +9,7 @@ class Cricket():
         self.role = role
 cricket = Cricket("kl_rahul","batsmen")
 print(cricket.name)
-print(cricket.role)        
+print(cricket.role)
 
 #__str__() provides a custom, human-readable description of an object
 class Car():
@@ -31,8 +31,8 @@ class Cricket():
     def player_info(self):
         return f"the player name is {self.name} and his age is {self.age}"
 cricket = Cricket("kl_rahul",33)
-print(cricket.player_info())        
-        
+print(cricket.player_info())
+
 #2.class Methods -> Operate on the class itself, not on individual instances. They have access to the class through the cls parameter.
 #Use the @classmethod decorator.
 # Useful when you need to modify class-level data.
@@ -43,9 +43,9 @@ class Car:
         cls.car_name = new_name
 print(Car.car_name)
 Car.change_car("mahindra")
-print(Car.car_name)     
+print(Car.car_name)
 
-#3.Static Methods ->Do not operate on an instance or class and don’t require self or cls. 
+#3.Static Methods ->Do not operate on an instance or class and don’t require self or cls.
 # They are utility functions that belong to the class for logical grouping.
 # Use the @staticmethod decorator.
 #  Useful for utility functions that are relevant to the class but do not depend on instance or class data.
@@ -56,7 +56,7 @@ class MathUtils:
 # Using the static method
 print(MathUtils.add(5, 3))  # Output: 8
 
-#4.Special Methods ->Built-in methods in Python that start and end with double underscores (__). 
+#4.Special Methods ->Built-in methods in Python that start and end with double underscores (__).
 # They allow customization of class behavior.
 #Used for operator overloading, object representation, and more.
 class Car():
@@ -98,13 +98,13 @@ class Dog(Animal):
         super().make_sound() # optionally call the default behavior
         return "Bow!!Bow"
 class Cat(Animal):
-    def make_sound(self):  
+    def make_sound(self):
         return "Meow!!!"
-dog = Dog()    
+dog = Dog()
 cat = Cat()
 print(dog.make_sound())
 print(cat.make_sound())
-          
+
 # Abstact class vs Inheritance
 #Abstract Class Use it when you have a common interface or behavior that all subclasses must implement.
 #Example: An abstract Shape class that requires all subclasses (Circle, Square, etc.) to implement an area() method.

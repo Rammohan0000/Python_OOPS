@@ -97,3 +97,30 @@ pattern = r'a\w+'
 matches = re.finditer(pattern, text)
 for match in matches:
     print(f"Match: {match.group()} at position {match.start()}-{match.end()}")
+
+# usecase for group()
+pattern = r"(?P<day>\d{2})-(?P<month>\d{2})-(?P<year>\d{4})"
+match = re.search(pattern, "19-12-2024")
+if match:
+    print(match.group("day"), match.group("month"), match.group("year"))
+
+# email validation
+email = "test.email@domain.com"
+pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+if re.match(pattern, email):
+    print("Valid email address.")
+else:
+    print("Invalid email address.")
+
+# example
+txt = "The rain in Spain"
+x = re.search(r"\bS\w+", txt)
+print(x.span())
+
+#IPv4 address validation
+ip_addr = input("Enter the IP-Address for the validation")
+pattern = r'^(\d{1,3}\.){3}\d{1,3}$'
+if re.findall(pattern, ip_addr):
+    print(f"given ip addr {ip_addr} is valid IP-Addr")
+else:
+    print("not a valid ip-address")    

@@ -4,8 +4,13 @@
 words = ["python", "is", "fun"]
 print(" ".join(words))
 
+#char to ascii value
 char = "a"
 print(ord(char))
+#ascii to char value
+ascii_value = 65
+char = chr(ascii_value)
+print(f"The character for ASCII value {ascii_value} is '{char}'")  # Output: The character for ASCII value 65 is 'A'
 
 class StringOperations:
     def __init__(self, input_string):

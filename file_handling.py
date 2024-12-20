@@ -93,3 +93,5 @@ with open('source_image.jpg', 'rb') as src_file:
     with open('destination_image.jpg', 'wb') as dest_file:
         dest_file.write(src_file.read())
 print("Image copied successfully!")
+
+

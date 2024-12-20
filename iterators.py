@@ -2,7 +2,6 @@
 #  an iterator is an object which implements the iterator protocol, which consist of the methods __iter__() and __next__().
 #  Iterators compute the next value only when needed Object that can return an iterator using iter(). Examples: list, string.
 # iterable vs iterator -> an iterable object that can return an iterator using iter(). Examples: list, string.
-# iterator is Object with __iter__() and __next__() methods.
 # __iter__() (Returns the iterator object itself.)
 # __next__() Returns the next element in the sequence. Raises StopIteration when done.
 # raises a StopIteration exception when there are no more items to return
