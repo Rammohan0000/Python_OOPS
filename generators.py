@@ -9,7 +9,6 @@ def custom_range(start, end):
     while start < end:
         yield start
         start += 1
-
 for number in custom_range(1, 5):
     print(number)
 
@@ -22,7 +21,7 @@ def fibonacci(n):
 for num in fibonacci(10):
     print(num)
 
-#ssmple example
+#sample example
 def my_generator():
     yield 1
     yield 2
