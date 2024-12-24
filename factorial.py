@@ -21,4 +21,5 @@ def remove_duplicates2(lst):
 
 input_list = list(map(int, input("enter the nos: ").split()))
 result = remove_duplicates2(input_list)
-print(result)        
+print(result) 
+

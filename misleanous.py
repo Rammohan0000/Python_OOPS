@@ -79,6 +79,14 @@ lst = input("Enter the list of words: ").split()
 n = int(input("Enter the length: "))
 print("Words greater than length", n, "are:", find_long_words(lst, n))
 
-
-
+#Count the occurrences of each word in a given sentence
+def word_count(sentence):
+    words = sentence.split()
+    word_count = {}
+    for word in words:
+        if word in word_count:
+            word_count[word] += 1
+        else:
+            word_count[word] = 1
+    return word_count
 
