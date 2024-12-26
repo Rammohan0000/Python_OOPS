@@ -116,3 +116,26 @@ def union_elements(lst1, lst2):
 lst1 = list(map(int, input("Enter the 1st list of numbers: ").split()))
 lst2 = list(map(int, input("Enter the 2nd list of numbers: ").split()))
 print("Union elements:", union_elements(lst1, lst2))
+
+#flatten a shallow list
+def flatten_list(lst):
+    return [item for sublist in lst for item in sublist]
+lst = [[1, 2, 3], [4, 5], [6, 7, 8]]
+print("Flattened list:", flatten_list(lst))
+
+# to find the common elements in nested lists
+def common_elements_nested(lst):
+    return list(set.intersection(*map(set, lst)))
+lst = [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
+print("Common elements in nested lists:", common_elements_nested(lst))
+
+#count frequency of elements in a list
+def frequency_elements(lst):
+    return {x: lst.count(x) for x in lst}
+lst = list(map(int, input("Enter the list of numbers: ").split()))
+print("Frequency of elements:", frequency_elements(lst))
+#2nd method
+import collections
+lst = list(map(int, input("Enter the list of numbers: ").split()))
+print("Frequency of elements:", collections.Counter(lst))
+
