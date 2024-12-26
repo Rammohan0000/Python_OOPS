@@ -105,7 +105,7 @@ cat = Cat()
 print(dog.make_sound())
 print(cat.make_sound())
 
-# Abstact class vs Inheritance
+#Abstact class vs Inheritance
 #Abstract Class Use it when you have a common interface or behavior that all subclasses must implement.
 #Example: An abstract Shape class that requires all subclasses (Circle, Square, etc.) to implement an area() method.
 #Inheritance:

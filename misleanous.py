@@ -90,3 +90,29 @@ def word_count(sentence):
             word_count[word] = 1
     return word_count
 
+# to print specified list after removing 0th, 4th and 5th elements
+def remove_elements(lst):
+    return [x for (i, x) in enumerate(lst) if i not in (0, 4, 5)]
+lst = list(map(int, input("Enter the list of numbers: ").split()))
+print("After removing 0th, 4th and 5th elements:", remove_elements(lst))
+
+# to check common in two lists
+def common_elements(lst1, lst2):
+    return list(set(lst1) & set(lst2))
+lst1 = list(map(int, input("Enter the 1st list of numbers: ").split()))
+lst2 = list(map(int, input("Enter the 2nd list of numbers: ").split()))
+print("Common elements:", common_elements(lst1, lst2))
+
+# to find the difference between two lists
+def difference_elements(lst1, lst2):
+    return list(set(lst1) - set(lst2))
+lst1 = list(map(int, input("Enter the 1st list of numbers: ").split()))
+lst2 = list(map(int, input("Enter the 2nd list of numbers: ").split()))
+print("Difference elements:", difference_elements(lst1, lst2))
+
+# to find the union of two lists
+def union_elements(lst1, lst2):
+    return list(set(lst1) | set(lst2))
+lst1 = list(map(int, input("Enter the 1st list of numbers: ").split()))
+lst2 = list(map(int, input("Enter the 2nd list of numbers: ").split()))
+print("Union elements:", union_elements(lst1, lst2))

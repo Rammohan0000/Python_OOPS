@@ -1,3 +1,4 @@
+# Method overriding occurs when a subclass provides a specific implementation for a method that is already defined in its superclass. 
 class Cricket_ODI:
     def Batsmen(self):
         print("Pavan is Best Batsmen")

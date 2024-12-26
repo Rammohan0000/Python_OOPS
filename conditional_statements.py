@@ -64,7 +64,6 @@ while True:
 print(f"{attempts} made so far") 
 
 #The For Loops in Python are a special type of loop statement that is used for sequential traversal.
-
 l1 = ["eat", "sleep", "repeat"]
 for count,ele in enumerate(l1):
     print (count, ele)
@@ -73,7 +72,6 @@ for count,ele in enumerate(l1):
 for x in range(2, 30, 3):
   print(x) 
     
-
 ###nested-for####
 # Outer loop for rows (1 to 5)
 for i in range(1, 6):  
