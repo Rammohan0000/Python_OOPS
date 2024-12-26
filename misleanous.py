@@ -139,3 +139,31 @@ import collections
 lst = list(map(int, input("Enter the list of numbers: ").split()))
 print("Frequency of elements:", collections.Counter(lst))
 
+#example for args, kwargs
+# args -> tuple of positional arguments passed to a function call 
+
+def add(*args):
+    return sum(args)
+def add(*args):
+    return sum(args)
+print(add(1, 2, 3, 4, 5))
+print(add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+
+#kwargs -> dictionary of keyword arguments passed to a function call
+def add(**kwargs):
+    return sum(kwargs.values())
+print(add(a=1, b=2, c=3))
+print(add(a=1, b=2, c=3, d=4, e=5))
+
+#args and kwargs together
+def add(*args, **kwargs):
+    return sum(args) + sum(kwargs.values())
+print(add(1, 2, 3, a=4, b=5, c=6))
+
+# to find the factorial of a number
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n-1)
+n = int(input("Enter a number: "))
+print("Factorial:", factorial(n))
