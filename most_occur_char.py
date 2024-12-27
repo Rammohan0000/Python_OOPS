@@ -12,11 +12,12 @@ str = input("Enter a string: ")
 print(occurance(str))
 
 # most occurring character
-def most_occuring_char(occurance_dict):
-    max_char = max(occurance_dict, key=occurance_dict.get)
-    return max_char
-occurance_dict = occurance(str)
-print(f"The most occurring character is: {most_occuring_char(occurance_dict)}")
+def new(s):
+    m = max(str, key = s.count)
+    return m, str.count(m)
+s = input("Enter the string")
+result = new(s)
+print(f"the most occured character is '{result[0]}' with frequency of {result[1]}")
 
 #longest word
 def find_longest_word(sentence):
@@ -120,5 +121,21 @@ def convert_uppercase(str):
 str = input("Enter a string: ")
 print(convert_uppercase(str))
 
+# write a python code to remove odd index characters from a string
+def remove_odd_index_char(str):
+    result = ""
+    for i in range(len(str)):
+        if i % 2 == 0:
+            result = result + str[i]
+    return result
+str = input("Enter a string: ")
+print(remove_odd_index_char(str))
 
+# ASCII value of a character
+a = 'I'
+print(ord(a))
+
+# ASCII value to character
+a = 65
+print(chr(a))
 

@@ -84,7 +84,8 @@ print(str(car))
 #class statement cannot be empty , if it is need to empty use "pass" keyword
 class Cricket:
     pass
-
+# An abstract class that cannot be instantiated directly and is meant to be subclassed.
+# It serves as a blueprint for other classes and can contain one or more abstract methods, which are methods declared without any implementation.
 # abstract methods -> declared in abstract class and must be implemented by subclasses
 # use @abstractmethod decorator from the abc module
 # Polymorphism allows us to handle different objects uniformly, improving code flexibility and simplicity.
@@ -111,3 +112,12 @@ print(cat.make_sound())
 #Inheritance:
 #Use it when a subclass can naturally extend or reuse the functionality of the parent class.
 #Example: A Car class inheriting from a Vehicle class to reuse attributes like speed and methods like move().#
+
+#__repr__ helps during debugging, it provides a string representation of the object 
+class MyClass:
+    def __init__(self, value):
+        self.value = value
+    def __repr__(self):
+        return f"MyClass(value={self.value})"
+obj = MyClass(10)
+print(repr(obj))  # MyClass(value=10)

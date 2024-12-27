@@ -29,16 +29,16 @@ class Person:
 person = Person("Alice", 30)
 
 # Accessing private attributes through getter methods
-print(person.get_name())  # Output: Alice
-print(person.get_age())   # Output: 30
+print(person.get_name())  
+print(person.get_age())  
 
 # Modifying private attributes through setter methods
 person.set_name("Bob")
 person.set_age(25)
 
 # Accessing updated private attributes
-print(person.get_name())  # Output: Bob
-print(person.get_age())   # Output: 25
+print(person.get_name()) 
+print(person.get_age())  
 
 # Attempting to directly access private attributes (will raise an AttributeError)
 # print(person.__name)  # AttributeError

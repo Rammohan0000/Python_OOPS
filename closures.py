@@ -33,7 +33,7 @@ print(double(5))
 print(triple(5)) 
 
 # sorting with closures
-def make_sort_key(key):
+def make_sort_key(key):             
     def sort_function(item):
         return item[key]
     return sort_function
@@ -49,7 +49,6 @@ print(sorted_data)
 # increment counter
 def counter(start=0):
     count = start
-
     def increment(step=1):
         nonlocal count  # Access the `count` variable from the enclosing scope
         count += step

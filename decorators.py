@@ -12,6 +12,7 @@ def say_hello():
 decorated_function = simple_decorator(say_hello)
 decorated_function()
 
+#2nd example
 def inner_div(func):
     def wrapper(a,b):
         if a<b:
@@ -29,13 +30,13 @@ def auth_decorator(func):
     def wrapper(user):
         if user == "admin":
             print("Access granted")
-            func()
+            func(user)  # Pass the user to sensitive_action
         else:
             print("Access denied")
     return wrapper
 @auth_decorator
-def sensitive_action():
-    print("Performing sensitive action")
+def sensitive_action(user):
+    print(f"Performing sensitive action for {user}")
 sensitive_action("admin")
 sensitive_action("guest")
 
@@ -52,7 +53,6 @@ def hello_decorator(func):
         return returned_value
         
     return inner1
-
 
 # adding decorator to the function
 @hello_decorator

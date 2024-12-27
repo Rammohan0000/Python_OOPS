@@ -96,6 +96,15 @@ def remove_elements(lst):
 lst = list(map(int, input("Enter the list of numbers: ").split()))
 print("After removing 0th, 4th and 5th elements:", remove_elements(lst))
 
+#emunerate example
+text = "hello"
+for index, char in enumerate(text):
+    print(f"Character at index {index}: {char}")
+
+fruits = ["apple", "banana", "cherry"]
+for index, fruit in enumerate(fruits, start=1):
+    print(f"Index {index}: {fruit}")
+
 # to check common in two lists
 def common_elements(lst1, lst2):
     return list(set(lst1) & set(lst2))
@@ -134,6 +143,7 @@ def frequency_elements(lst):
     return {x: lst.count(x) for x in lst}
 lst = list(map(int, input("Enter the list of numbers: ").split()))
 print("Frequency of elements:", frequency_elements(lst))
+
 #2nd method
 import collections
 lst = list(map(int, input("Enter the list of numbers: ").split()))
@@ -141,9 +151,6 @@ print("Frequency of elements:", collections.Counter(lst))
 
 #example for args, kwargs
 # args -> tuple of positional arguments passed to a function call 
-
-def add(*args):
-    return sum(args)
 def add(*args):
     return sum(args)
 print(add(1, 2, 3, 4, 5))
@@ -167,3 +174,5 @@ def factorial(n):
     return n * factorial(n-1)
 n = int(input("Enter a number: "))
 print("Factorial:", factorial(n))
+
+
