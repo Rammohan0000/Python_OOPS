@@ -17,4 +17,3 @@ print(c)
 
 c1 = Cricket('Dhoni','Captain')
 print(c1)
-

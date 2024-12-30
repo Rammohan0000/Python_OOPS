@@ -60,6 +60,7 @@ new_text = re.sub(pattern, replacement, text)
 print(new_text)
 
 # splitting a string
+import re
 text = 'apple, banana, grape, mango'
 pattern = r'[:,]'
 fruits = re.split(pattern,text.strip())
@@ -113,7 +114,7 @@ else:
     print("Invalid email address.")
 
 # example
-txt = "The rain in Spain"
+txt = "the rain in Spain"
 x = re.search(r"\bS\w+", txt)
 print(x.span())
 

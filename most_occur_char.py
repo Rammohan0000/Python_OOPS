@@ -69,6 +69,18 @@ def remove_odd_index_char(str):
 str = input("Enter a string: ")
 print(remove_odd_index_char(str))
 
+#odd index characters
+def odd_index(str):
+    if len(str) == 0:
+        raise ValueError
+    result = ''
+    for i in range(len(str)):
+        if i % 2 != 0:
+            result +=str[i] 
+    return result
+str = 'rammohan'
+print(odd_index(str))
+
 #remove special characters from a string
 def remove_special_char(str):
     result = ""
@@ -78,6 +90,12 @@ def remove_special_char(str):
     return result
 str = input("Enter a string: ")
 print(remove_special_char(str))
+
+#2nd method
+def remove_special_char(s):
+    return ''.join([char for char in s if char.isalnum()])
+s = input("Enter a string: ")
+print(remove_special_char(s))
 
 #remove all characters except alphabets
 def remove_special_char(str):
