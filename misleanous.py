@@ -35,16 +35,27 @@ def second_largest(lst):
 lst = list(map(int, input("Enter the list of numbers: ").split()))
 print("2nd largest:", second_largest(lst))
 
-# count vowels in a string
+#count vowels in a string
 def count_vowels(s):
-    vowels = 'aeiou'
+    vowels = 'aeiouAEIOU'
     count = 0
     for char in s:
-        if char.lower() in vowels:
+        if char in vowels:
             count += 1
     return count
-s = input("Enter a string: ")       
-print("Vowels count:", count_vowels(s))
+
+# replace vowels in a string
+def replace_vowels(s):
+    vowels = 'aeiouAEIOU'
+    result = ''
+    for char in s:
+        if char in vowels:
+            result +='$'
+        else:
+            result += char
+    return result
+s = input("Enter a string: ")
+print("String after replacing vowels:", replace_vowels(s))
 
 # swap first and last element
 def swap_first_last(lst):

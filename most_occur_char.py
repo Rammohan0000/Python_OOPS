@@ -13,11 +13,11 @@ print(occurance(str))
 
 # most occurring character
 def new(s):
-    m = max(str, key = s.count)
-    return m, str.count(m)
-s = input("Enter the string")
+    most = max(s, key = s.count)
+    return most, s.count(most)
+s = input("Enter the String: ")
 result = new(s)
-print(f"the most occured character is '{result[0]}' with frequency of {result[1]}")
+print(f"the most occured character is '{result[0]}' with frequency of {result[1]} ")
 
 #longest word
 def find_longest_word(sentence):

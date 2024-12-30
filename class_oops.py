@@ -84,6 +84,7 @@ print(str(car))
 #class statement cannot be empty , if it is need to empty use "pass" keyword
 class Cricket:
     pass
+   
 # An abstract class that cannot be instantiated directly and is meant to be subclassed.
 # It serves as a blueprint for other classes and can contain one or more abstract methods, which are methods declared without any implementation.
 # abstract methods -> declared in abstract class and must be implemented by subclasses
@@ -114,10 +115,58 @@ print(cat.make_sound())
 #Example: A Car class inheriting from a Vehicle class to reuse attributes like speed and methods like move().#
 
 #__repr__ helps during debugging, it provides a string representation of the object 
-class MyClass:
-    def __init__(self, value):
-        self.value = value
+class Book:
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+
+    def __str__(self):
+        return f"'{self.title}' by {self.author}, {self.pages} pages"
+
     def __repr__(self):
-        return f"MyClass(value={self.value})"
-obj = MyClass(10)
-print(repr(obj))  # MyClass(value=10)
+        return f"Book('{self.title}', '{self.author}', {self.pages})"
+
+book = Book("1984", "George Orwell", 328)
+
+print(str(book))    # Output: '1984' by George Orwell, 328 pages
+print(repr(book))   # Output: Book('1984', 'George Orwell', 328)
+
+# An abstract class is a class that cannot be instantiated directly and is meant to be subclassed.
+# It provides a common interface for its subclasses and can contain one or more abstract methods. 
+# Abstract methods are methods declared without any implementation and must be implemented by subclasses.
+# This is useful for defining a common interface that all subclasses must follow
+# Use the @abstractmethod decorator from the abc module to declare abstract methods.
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):  # Abstract Base Class
+    @abstractmethod
+    def start_engine(self):
+        pass
+
+    @abstractmethod
+    def stop_engine(self):
+        pass
+
+class Car(Vehicle):
+    def start_engine(self):
+        return "Car engine started"
+
+    def stop_engine(self):
+        return "Car engine stopped"
+
+class Motorcycle(Vehicle):
+    def start_engine(self):
+        return "Motorcycle engine started"
+
+    def stop_engine(self):
+        return "Motorcycle engine stopped"
+
+# Instantiate objects of the subclasses
+car = Car()
+motorcycle = Motorcycle()
+
+print(car.start_engine())        # Output: Car engine started
+print(car.stop_engine())         # Output: Car engine stopped
+print(motorcycle.start_engine()) # Output: Motorcycle engine started
+print(motorcycle.stop_engine())  # Output: Motorcycle engine stopped

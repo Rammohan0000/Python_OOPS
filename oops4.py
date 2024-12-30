@@ -42,3 +42,5 @@ print(person.get_age())
 
 # Attempting to directly access private attributes (will raise an AttributeError)
 # print(person.__name)  # AttributeError
+
+
