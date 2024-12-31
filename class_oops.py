@@ -69,11 +69,11 @@ car = Car("venue",2019)
 print(car.model)
 print(str(car))
 
-#modify object properties
+#modify object propertiess
 car.year = 2025
 print(str(car))
 
-#delete object property
+#delete object propertyuu
 #del car.year
 print(str(car))# getting error i.e., year is missing
 

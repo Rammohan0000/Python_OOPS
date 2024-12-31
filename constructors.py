@@ -31,7 +31,6 @@ class Carrom:
 c = Carrom()
 print(c.role)        
 
-
 #inheritance ->allowing a class to acquire the properties and methods of another class
 #1.Single level inheritance -> single class inherits from single parent class
 class Car():

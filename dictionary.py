@@ -106,8 +106,9 @@ for x,y in nested.items():
     for key,values in y.items():
         print(f"{key} -> {values}")
 
-#conerting list into dict
+#converting list into dict
 keys = ['model','year','color']
 values = ['venue',2019,'white']
 result = dict(zip(keys,values))
 print(result)
+
