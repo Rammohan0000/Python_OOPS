@@ -1,0 +1,27 @@
+testbed:
+  name: Sample_Testbed
+  devices:
+    router1:
+      os: iosxe
+      type: router
+      connections:
+        cli:
+          protocol: ssh
+          ip: 192.168.1.1
+          port: 22
+      credentials:
+        default:
+          username: admin
+          password: admin123
+    router2:
+      os: iosxe
+      type: router
+      connections:
+        cli:
+          protocol: ssh
+          ip: 192.168.1.2
+          port: 22
+      credentials:
+        default:
+          username: admin
+          password: admin123

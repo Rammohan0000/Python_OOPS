@@ -125,3 +125,12 @@ if re.findall(pattern, ip_addr):
     print(f"given ip addr {ip_addr} is valid IP-Addr")
 else:
     print("not a valid ip-address")    
+
+# Regular expression with a named capturing group
+import re
+pattern = r"(?P<digit>\d+)"
+text = "123"
+match = re.search(pattern, text)
+# Access the captured value using the group name
+if match:
+    print(match.group("digit"))  # Outputs: 123

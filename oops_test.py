@@ -1,19 +1,24 @@
 class Cricket:
-    def __init__(self,player_name, player_role):
+    def __init__(self, player_name, role):
         self.__player_name = player_name
-        self.__player_role = player_role
+        self._role = role
     def __str__(self):
-        return f'{self.__player_name} is a {self.__player_role}'
-
+        return f"The player name is {self._Cricket__player_name} and his role is {self._role}"
 class Team(Cricket):
-    def __init__(self,team_name, player_name, player_role):
-        super().__init__(player_name, player_role)
-        self.__team_name = team_name
+    def __init__(self,player_name,role,captain):
+        super().__init__(player_name, role)
+        self.__captain = captain
     def __str__(self):
-        return f'{self.__team_name} has {self._Cricket__player_name} as a {self._Cricket__player_role}'
-    
-c = Team('India','Dhoni','Captain')
-print(c)    
+        return f"The Player name is {self._Cricket__player_name} , his role is {self._role}  and his captain is {self._Team__captain}"
+class Match(Team):
+    def __init__(self, player_name, role, captain, result):
+        super().__init__(player_name, role, captain)
+        self.result = result
+    def __str__(self):
+        return f"The Player name is {self._Cricket__player_name} , his role is {self._role} and his captain is {self._Team__captain} and result of the match is {self.result}"
 
-c1 = Cricket('Dhoni','Captain')
-print(c1)
+team = Team("Kl_rahul", "Batsmen", "Rohit")
+print(team)
+
+match = Match("Kl_rahul", "Batsmen", "Rohit", "India won")
+print(match)
