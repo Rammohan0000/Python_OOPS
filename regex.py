@@ -133,4 +133,25 @@ text = "123"
 match = re.search(pattern, text)
 # Access the captured value using the group name
 if match:
-    print(match.group("digit"))  # Outputs: 123
+    print(match.group("digit")) 
+
+# Match 'a' repeated between 2 and 4 times
+import re
+pattern = r'a{2,4}'
+text = 'a aa aaa aaaa aaaaa'
+matches = re.findall(pattern, text)
+print(matches)  # Output: ['aa', 'aaa', 'aaaa', 'aaaa']
+
+# Match any single character 'a', 'b', or 'c'
+import re
+pattern = r'[abc]'
+text = 'apple banana cherry date'
+matches = re.findall(pattern, text)
+print(matches) 
+
+# Match any character except 'a', 'b', or 'c'
+import re
+pattern = r'[^abc]'
+text = 'apple banana cherry date'
+matches = re.findall(pattern, text)
+print(matches) 

@@ -94,4 +94,10 @@ with open('source_image.jpg', 'rb') as src_file:
         dest_file.write(src_file.read())
 print("Image copied successfully!")
 
+# use of 'x'
+try:
+    with open('newfile.txt', 'x') as file:
+        file.write('This is a new file created using x mode.')
+except FileExistsError:
+    print('File already exists.')
 

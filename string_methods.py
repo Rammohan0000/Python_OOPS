@@ -1,5 +1,5 @@
 # strings are sequence of characters and immutable
-#string are stored in arrays of characters
+# string are stored in arrays of characters
 
 words = ["python", "is", "fun"]
 print(" ".join(words))

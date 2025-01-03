@@ -20,7 +20,7 @@ class Football():
         self.name = name
         self.role = role
 football = Football('bigil','30')
-print(football.name, football.role)     
+print(football.name, football.role)    
 
 #3.Non-Parameterised Constructor -> A user-defined constructor (__init__ method) that does not take any parameters except self.
 #It initializes the object with predefined values or performs specific tasks during object creation.
