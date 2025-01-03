@@ -155,3 +155,29 @@ pattern = r'[^abc]'
 text = 'apple banana cherry date'
 matches = re.findall(pattern, text)
 print(matches) 
+
+#write a python program to validate a phone number
+import re
+phone_number = input("Enter the phone number for validation")
+pattern = r'^\d{10}$'
+if re.findall(pattern, phone_number):
+    print(f"given phone number {phone_number} is valid")
+else:
+    print("not a valid phone number")
+
+#write a python program to remove leading zeros in an ip address
+import re
+ip_addr = input("Enter the IP-Address for the validation")
+pattern = r'^0*'
+new_ip = re.sub(pattern, '', ip_addr)
+print(new_ip)
+
+#write a python program to validate a password
+import re
+password = input("Enter the password for validation")
+pattern = r'(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}'
+if re.match(pattern, password):
+    print("Valid password")
+else:
+    print("Invalid password")
+    
