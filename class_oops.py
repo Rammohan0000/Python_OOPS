@@ -132,11 +132,7 @@ book = Book("1984", "George Orwell", 328)
 print(str(book))    # Output: '1984' by George Orwell, 328 pages
 print(repr(book))   # Output: Book('1984', 'George Orwell', 328)
 
-# An abstract class is a class that cannot be instantiated directly and is meant to be subclassed.
-# It provides a common interface for its subclasses and can contain one or more abstract methods. 
-# Abstract methods are methods declared without any implementation and must be implemented by subclasses.
-# This is useful for defining a common interface that all subclasses must follow
-# Use the @abstractmethod decorator from the abc module to declare abstract methods.
+
 from abc import ABC, abstractmethod
 
 class Vehicle(ABC):  # Abstract Base Class
@@ -163,10 +159,18 @@ class Motorcycle(Vehicle):
         return "Motorcycle engine stopped"
 
 # Instantiate objects of the subclasses
+#car = Car()
+#motorcycle = Motorcycle()
+
+#print(car.start_engine())        # Output: Car engine started
+#print(car.stop_engine())         # Output: Car engine stopped
+#print(motorcycle.start_engine()) # Output: Motorcycle engine started
+#print(motorcycle.stop_engine())  # Output: Motorcycle engine stopped
+
+def initiate_vehicle(vehicle: Vehicle):
+    vehicle.start_engine()
+    vehicle.stop_engine()
 car = Car()
 motorcycle = Motorcycle()
-
-print(car.start_engine())        # Output: Car engine started
-print(car.stop_engine())         # Output: Car engine stopped
-print(motorcycle.start_engine()) # Output: Motorcycle engine started
-print(motorcycle.stop_engine())  # Output: Motorcycle engine stopped
+initiate_vehicle(car)         # Output: Car engine started
+initiate_vehicle(motorcycle)  # Output: Motorcycle engine started

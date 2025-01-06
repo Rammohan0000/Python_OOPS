@@ -180,4 +180,13 @@ if re.match(pattern, password):
     print("Valid password")
 else:
     print("Invalid password")
+
+#validate phone number
+import re
+phone_number = input("Enter the phone number for validation")
+pattern = r'^\d{10}$'
+if re.findall(pattern, phone_number):
+    print(f"given phone number {phone_number} is valid")
+else:
+    print("not a valid phone number")
     
