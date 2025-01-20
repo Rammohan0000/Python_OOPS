@@ -1,6 +1,6 @@
 #constructors are special methods used to initialize objects of a class
 #The primary constructor in Python is the __init__() method
-#1.Default Constructor -> A constructor with no parameters (other than self).
+#1.Default Constructor -> A default constructor is a constructor that takes no arguments or has default values for all its arguments.
 class Cricket():
     def __init__(self):
         self.name = 'kl_rahul'
@@ -24,6 +24,7 @@ print(football.name, football.role)
 
 #3.Non-Parameterised Constructor -> A user-defined constructor (__init__ method) that does not take any parameters except self.
 #It initializes the object with predefined values or performs specific tasks during object creation.
+#Non-parameterized constructors are useful when you want to create objects with a consistent set of initial values.
 #explicitly defined
 class Carrom:
     def __init__(self):

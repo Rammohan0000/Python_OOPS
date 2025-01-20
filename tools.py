@@ -1,5 +1,5 @@
 # lambda functions -> it is an nameless function, defined using lambda keyword
-# they are typically used for small, single-use functgions
+# they are typically used for small, single-use function
 # syntax: -> lambda arguments: expression
 # Traditional function
 def add(x, y):

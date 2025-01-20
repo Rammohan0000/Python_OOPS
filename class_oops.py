@@ -168,8 +168,8 @@ class Motorcycle(Vehicle):
 #print(motorcycle.stop_engine())  # Output: Motorcycle engine stopped
 
 def initiate_vehicle(vehicle: Vehicle):
-    vehicle.start_engine()
-    vehicle.stop_engine()
+    print(vehicle.start_engine())
+    print(vehicle.stop_engine())
 car = Car()
 motorcycle = Motorcycle()
 initiate_vehicle(car)         # Output: Car engine started

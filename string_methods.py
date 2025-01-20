@@ -2,7 +2,7 @@
 # string are stored in arrays of characters
 
 words = ["python", "is", "fun"]
-print(" ".join(words))
+print("$".join(words))
 
 #char to ascii value
 char = "a"

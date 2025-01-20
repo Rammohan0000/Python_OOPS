@@ -90,16 +90,19 @@ lst = input("Enter the list of words: ").split()
 n = int(input("Enter the length: "))
 print("Words greater than length", n, "are:", find_long_words(lst, n))
 
-#Count the occurrences of each word in a given sentence
+# count the occurrences of each word in a given sentence
 def word_count(sentence):
     words = sentence.split()
-    word_count = {}
+    word_counts = {}
     for word in words:
-        if word in word_count:
-            word_count[word] += 1
+        if word in word_counts:
+            word_counts[word] += 1
         else:
-            word_count[word] = 1
-    return word_count
+            word_counts[word] = 1
+    return word_counts
+sentence = input("Enter a sentence: ")
+print("Word count:", word_count(sentence))
+
 
 # to print specified list after removing 0th, 4th and 5th elements
 def remove_elements(lst):
@@ -159,6 +162,10 @@ print("Frequency of elements:", frequency_elements(lst))
 import collections
 lst = list(map(int, input("Enter the list of numbers: ").split()))
 print("Frequency of elements:", collections.Counter(lst))
+
+import collections
+s = input("Enter a string: ")
+print("Frequency of characters:", collections.Counter(s))
 
 #example for args, kwargs
 # args -> tuple of positional arguments passed to a function call 

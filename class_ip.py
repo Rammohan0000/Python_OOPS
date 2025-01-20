@@ -40,13 +40,6 @@ print(f"IP Address of the system is {ip_address}")
 
 # write a python program to get details of the interface, which are in up state
 def get_up_interfaces(interfaces):
-    """
-    Get details of interfaces that are in the 'up' state.
-    Args:
-        interfaces (dict): A dictionary of interfaces with details.
-    Returns:
-        list: A list of interfaces that are in the 'up' state.
-    """
     up_interfaces = []
     for name, details in interfaces.items():
         if details.get('state') == 'up':
@@ -76,13 +69,6 @@ else:
 import re
 
 def get_up_interfaces(interface_output):
-    """
-    Extract interface details in 'up' state using regular expressions.
-    Args:
-        interface_output (str): The multiline string containing interface details.
-    Returns:
-        list: A list of interface names that are in the 'up' state.
-    """
     pattern = r"(?P<interface>\S+)\s+\S+\s+up"
     matches = re.finditer(pattern, interface_output)
     up_interfaces = [match.group("interface") for match in matches]
