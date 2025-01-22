@@ -13,3 +13,12 @@
 # to view package info -> pip show <package-name>
 # installing multiple packages from requirements.txt -> pip install -r requirements.txt
 # search for a package -> pip search <package-name>
+
+
+# python is a high level programming language
+# python is an interpreted language it executes it line by line 
+# python is a dynamically typed language -> we don't have to specify the data type of a variable
+# python is an object oriented programming language -> everything in python is an object
+# python is a scripting language -> it is used to automate tasks
+# python is cross platform -> it can run on any platform
+# extensive librarires

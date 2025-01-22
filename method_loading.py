@@ -1,4 +1,5 @@
 #  allows a class to have more than one method with the same name, as long as their parameter lists are different. 
+# method overloading is compiler time polymorphism
 class MathOperations:
     def add(self, a, b, c):
         return a + b + c
