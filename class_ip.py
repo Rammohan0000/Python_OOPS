@@ -74,8 +74,6 @@ def get_up_interfaces(interface_output):
     up_interfaces = [match.group("interface") for match in matches]
     return up_interfaces
 
-
-# Example interface output from a network device
 interface_output = """
 GigabitEthernet0/0   192.168.1.1   up
 GigabitEthernet0/1   192.168.1.2   down
@@ -83,10 +81,8 @@ FastEthernet0/0      10.0.0.1      up
 FastEthernet0/1      10.0.0.2      down
 """
 
-# Get interfaces in 'up' state
 up_interfaces = get_up_interfaces(interface_output)
 
-# Print the result
 if up_interfaces:
     print("Interfaces in 'up' state:")
     for interface in up_interfaces:

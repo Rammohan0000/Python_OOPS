@@ -190,3 +190,36 @@ if re.findall(pattern, phone_number):
 else:
     print("not a valid phone number")
     
+###important program to extract interface details
+import re
+
+def status(interface_data):
+    # Updated regex to capture interface, IP, and state
+    pattern = r"(?P<interface>\S+)\s+(?P<ip>\S+)\s+(?P<state>\S+)"
+    matches = re.finditer(pattern, interface_data)
+    details = [match.groupdict() for match in matches]  # Collect all details as dictionaries
+    return details
+
+interface_data = '''
+gigabitethernet0/1  192.168.1.1   up
+gigabitethernet0/2  192.168.1.2   down
+gigabitethernet0/3  192.168.1.3   down
+gigabitethernet0/4  192.168.1.4   down
+'''
+
+details = status(interface_data)
+
+# Print all interface details
+for detail in details:
+    print(f"Interface: {detail['interface']}, IP: {detail['ip']}, State: {detail['state']}")
+
+# Accessing details list
+for idx, detail in enumerate(details):
+    print(f"Details for Interface {idx + 1}: {detail}")
+
+# Attempt to use dictionary-specific methods on the list will raise an error
+# To access keys/values for individual dictionaries in the list:
+for detail in details:
+    print(f"Keys: {detail.keys()}")
+    print(f"Values: {detail.values()}")
+    print(f"Items: {detail.items()}")
