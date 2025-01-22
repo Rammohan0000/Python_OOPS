@@ -46,7 +46,6 @@ def get_up_interfaces(interfaces):
             up_interfaces.append({name: details})
     return up_interfaces
 
-
 # Sample interface data
 interfaces = {
     "GigabitEthernet0/0": {"state": "up", "ip": "192.168.1.1", "speed": "1Gbps"},
