@@ -103,6 +103,19 @@ def word_count(sentence):
 sentence = input("Enter a sentence: ")
 print("Word count:", word_count(sentence))
 
+#most occured word in a sentence
+def most_occured_word(sentence):
+    words = sentence.split()
+    word_counts = {}
+    for word in words:
+        if word in word_counts:
+            word_counts[word] += 1
+        else:
+            word_counts[word] = 1
+    return max(word_counts, key=word_counts.get)
+sentence = input("Enter a sentence: ")
+print("Most occured word:", most_occured_word(sentence))
+
 
 # to print specified list after removing 0th, 4th and 5th elements
 def remove_elements(lst):

@@ -24,7 +24,7 @@
       # \W: Matches any non-alphanumeric character.
       # \b: beginning or end of word
       # \B: Not at beginning or end of word
-      # \a: returns a match if the specified character are at beginning of string
+      # \a: returns a match if the specified character are at beginning of string.
 
 # match a pattern at start of the string
 import re
