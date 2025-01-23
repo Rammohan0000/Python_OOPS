@@ -103,6 +103,16 @@ def word_count(sentence):
 sentence = input("Enter a sentence: ")
 print("Word count:", word_count(sentence))
 
+#count particular word in a sentence
+def count_word_occurrences(sentence, word):
+    words = sentence.split()
+    count = words.count(word)
+    return count
+sentence = "I love reading books, I love playing cricket and I love watching movies."
+word = "love"
+occurrences = count_word_occurrences(sentence.lower(), word.lower()) 
+print(f"The word '{word}' occurs {occurrences} times in the sentence.")
+
 #most occured word in a sentence
 def most_occured_word(sentence):
     words = sentence.split()
@@ -170,6 +180,15 @@ def frequency_elements(lst):
     return {x: lst.count(x) for x in lst}
 lst = list(map(int, input("Enter the list of numbers: ").split()))
 print("Frequency of elements:", frequency_elements(lst))
+
+#most freq element in a list
+def most_frequent_element(lst):
+    frequency = {x: lst.count(x) for x in lst}
+    most_frequent = max(frequency, key=frequency.get)
+    return most_frequent, frequency[most_frequent]
+lst = list(map(int, input("Enter the list of numbers: ").split()))
+most_frequent, count = most_frequent_element(lst)
+print(f"The most frequent element is {most_frequent} with a frequency of {count}.")
 
 #2nd method
 import collections

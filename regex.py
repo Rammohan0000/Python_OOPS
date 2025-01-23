@@ -32,7 +32,7 @@ pattern = r'hello'
 text = 'hi_world'
 if re.match(pattern,text):
     print('true')
-else:
+else: 
     print('pls check your regex condition')    
 
 # search for the pattern anywhere in a string
@@ -140,7 +140,7 @@ import re
 pattern = r'a{2,4}'
 text = 'a aa aaa aaaa aaaaa'
 matches = re.findall(pattern, text)
-print(matches)  # Output: ['aa', 'aaa', 'aaaa', 'aaaa']
+print(matches)  
 
 # Match any single character 'a', 'b', or 'c'
 import re

@@ -11,7 +11,7 @@ def occurance(str):
 str = input("Enter a string: ")
 print(occurance(str))
 
-# most occurring character
+# most occurring character                                                 
 def new(s):
     most = max(s, key = s.count)
     return most, s.count(most)

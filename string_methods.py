@@ -105,8 +105,8 @@ splitlines()	   Splits the string at line breaks and returns a list
 startswith()	   Returns true if the string starts with the specified value
 strip()	           Returns a trimmed version of the string
 swapcase()	       Swaps cases, lower case becomes upper case and vice versa
-title()	          Converts the first character of each word to upper case
-translate()	      Returns a translated string
-upper()	          Converts a string into upper case
-zfill()	          Fills the string with a specified number of 0 values at the beginning
+title()	           Converts the first character of each word to upper case
+translate()	       Returns a translated string
+upper()	           Converts a string into upper case
+zfill()	           Fills the string with a specified number of 0 values at the beginning
 '''

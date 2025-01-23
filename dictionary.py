@@ -112,6 +112,12 @@ values = ['venue',2019,'white']
 result = dict(zip(keys,values))
 print(result)
 
+# fromkeys() method
+keys = ['model','year','color']
+values = 'NA'
+result = dict.fromkeys(keys,values)
+print(result)
+
 '''
 Method	      Description
 clear()	      Removes all the elements from the dictionary

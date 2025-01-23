@@ -70,7 +70,7 @@ import re
 def get_up_interfaces(interface_output):
     pattern = r"(?P<interface>\S+)\s+\S+\s+up"
     matches = re.finditer(pattern, interface_output)
-    up_interfaces = [match.group("interface") for match in matches]
+    up_interfaces = [match.groupdict("interface") for match in matches]
     return up_interfaces
 
 interface_output = """
