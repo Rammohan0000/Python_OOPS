@@ -126,7 +126,6 @@ def most_occured_word(sentence):
 sentence = input("Enter a sentence: ")
 print("Most occured word:", most_occured_word(sentence))
 
-
 # to print specified list after removing 0th, 4th and 5th elements
 def remove_elements(lst):
     return [x for (i, x) in enumerate(lst) if i not in (0, 4, 5)]

@@ -33,7 +33,7 @@ ip_addr = input("Enter the IP Address: ")
 print(is_ip(ip_addr))
 
 #write a program to get the ip address of the system
-import socket
+import socket 
 hostname = socket.gethostname()
 ip_address = socket.gethostbyname(hostname)
 print(f"IP Address of the system is {ip_address}")

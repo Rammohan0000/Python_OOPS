@@ -197,7 +197,7 @@ def status(interface_data):
     # Updated regex to capture interface, IP, and state
     pattern = r"(?P<interface>\S+)\s+(?P<ip>\S+)\s+(?P<state>\S+)"
     matches = re.finditer(pattern, interface_data)
-    details = [match.groupdict() for match in matches]  # Collect all details as dictionaries
+    details = [match.groupdict() for match in matches if match.group('state') == 'up']  # Collect all details as dictionaries
     return details
 
 interface_data = '''
