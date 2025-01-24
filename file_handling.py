@@ -101,3 +101,17 @@ try:
 except FileExistsError:
     print('File already exists.')
 
+# example
+try:
+    with open('devices.txt', 'x') as content:
+        content.writelines([
+            'Hi, this is a sample file.\n',
+            'Please check this file.\n',
+            'You are entering multiple lines.\n'
+        ])
+    with open('devices.txt', 'r') as matter:
+        data = matter.readlines()
+        for line in data:
+            print(line.strip()) 
+except FileExistsError:
+    print("This file was already created!!!")
