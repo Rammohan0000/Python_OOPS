@@ -53,5 +53,4 @@ def score(nested, target_runs):
     for format_name, player_data in nested.items():
         if int(player_data['total-runs']) > target_runs:
             print(f"{player_data['name']} from {format_name} with {player_data['total-runs']} runs.")
-# Example Call
 score(nested, 40000)
