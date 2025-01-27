@@ -27,7 +27,7 @@ class Squares:
 squares = Squares(5)
 for square in squares:
     print(square)
-
+    
 # iterators vs loops
 my_list = [10, 20, 30]
 #using for loop

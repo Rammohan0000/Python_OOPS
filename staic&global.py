@@ -18,3 +18,11 @@ print(Counter.increment())
 print(Counter.increment())  
 
 
+# local variable 2nd example
+x = 1
+def check(x):
+    x = x + 5
+    print(x)
+   # return x #it updates the global variable, otherwise it will not update the global variable x 
+x = check(x)
+print(x)

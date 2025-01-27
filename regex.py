@@ -75,6 +75,7 @@ number = re.findall(pattern, text)
 print(number)
 
 #example
+import re
 pattern = r'ca*bb+t?'
 text = 'ct, caat, cbb, cat'
 words = text.split(',')
@@ -190,7 +191,7 @@ if re.findall(pattern, phone_number):
 else:
     print("not a valid phone number")
     
-###important program to extract interface details
+###important program to extract interface details and convert them into a list of dictionaries
 import re
 
 def status(interface_data):

@@ -101,7 +101,7 @@ try:
 except FileExistsError:
     print('File already exists.')
 
-# example
+# example to print line by line
 try:
     with open('devices.txt', 'x') as content:
         content.writelines([
@@ -112,6 +112,31 @@ try:
     with open('devices.txt', 'r') as matter:
         data = matter.readlines()
         for line in data:
-            print(line.strip()) 
+            print(" ".join(word for word in line.strip().split()))
+except FileExistsError:
+    print("This file was already created!!!")
+
+
+# example to print word by word
+try:
+    # Create a new file and write multiple lines
+    with open("devices.txt", "w") as content:
+        content.writelines(
+            [
+                "Hi, this is a sample file.\n",
+                "Please check this file.\n",
+                "You are entering multiple lines.\n",
+            ]
+        )
+    
+    # Open the file to read its content
+    with open("devices.txt", "r") as matter:
+        data = matter.readlines()
+        for line in data:
+            words = line.strip().split()  # Split the line into words
+            print(words)
+            for word in words:
+                print(word)  # Print each word on a new line
+
 except FileExistsError:
     print("This file was already created!!!")
