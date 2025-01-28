@@ -61,3 +61,4 @@ print(counter1(5)) # Output: 18
 counter2 = counter()
 print(counter2())  # Output: 1
 print(counter2(3)) # Output: 4
+

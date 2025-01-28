@@ -6,7 +6,7 @@ print(color_list)
 
 color_list.remove("Black")
 print(color_list)
-
+                                                                        
 color_list[2]="Yellow"
 print(color_list)
 

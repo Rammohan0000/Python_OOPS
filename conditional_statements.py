@@ -94,4 +94,26 @@ for letter in 'rammohan':
     print('Current Letter :', letter)   
 
 
-   
+# break and continue
+# break statement is used to exit the loop when condition is met.
+# continue statement is used to skip the current block and move to the next iteration of the loop.
+# pass statement is used to write empty loops. It is used when a statement is required syntactically but you do not want any command or code to execute.
+# example for break statement
+numbers = [1, 3, 5, 7, 8, 9, 11]
+for num in numbers:
+    if num % 2 == 0:
+        print(f"First even number found: {num}")
+        break  # Exit the loop as soon as an even number is found
+else:
+    print("No even number found")
+
+# continue statement
+for i in range(1, 11):
+    if i % 2 == 0:
+        continue  # Skip even numbers
+    print(i)
+
+
+# pass statement
+for i in range(1, 11):
+    pass  # No operation is performed. It is used as a placeholder when no action is required
