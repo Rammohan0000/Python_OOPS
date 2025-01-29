@@ -39,21 +39,7 @@ class TestBoolean(unittest.TestCase):
 if __name__ == "__main__":
     unittest.main()
 
-# 5. AssertIs() and AssertIsNot()
-import unittest
-class TestIdentity(unittest.TestCase):
-    def test_identity(self):
-        a = None
-        b = None
-        self.assertIs(a, b)  
-
-        x = [1, 2, 3]
-        y = [1, 2, 3]
-        self.assertIsNot(x, y)  
-if __name__ == "__main__":
-    unittest.main()
-
-# 6. AssertIn() and AssertNotIn()
+# 5. AssertIn() and AssertNotIn()
 import unittest
 class TestMembership(unittest.TestCase):
     def test_membership(self):
