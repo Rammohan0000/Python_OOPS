@@ -55,12 +55,17 @@ def test_less():
 # to run the tests in a class, we can use the -m option followed by the marker name.          
 # pytest -m great marker.py
 
-# Fixtures
+# ->Fixtures
 #Fixtures are functions, which will run before each test function to which it is applied. 
 # Fixtures are used to feed some data to the tests such as database connections, URLs to test and some sort of input data. 
 # Therefore, instead of running the same code for every test, we can attach fixture function to the tests and it will run and return the data to the test before executing each test.
 # Fixtures are defined using the pytest.fixture() decorator.
 # Fixtures are used to manage the test setup and teardown.
+# we have a fixture function named input_value, which supplies the input to the tests. To access the fixture function
+# Pytest while the test is getting executed, will see the fixture name as input parameter. 
+# It then executes the fixture function and the returned value is stored to the input parameter, which can be used by the test.
+# Fixtures with parameters
+# Fixtures can be used to pass arguments to the test functions.
 # Example:
 import pytest
 @pytest.fixture
@@ -71,7 +76,60 @@ def test_divisible_by_3(input_value):
     assert input_value % 3 == 0
 def test_divisible_by_6(input_value):
     assert input_value % 6 == 0
+# to run the test, use the command: pytest -v intro.py
+# pytest -k "test_divisible_by_3" intro.py is used to run a specific test case in the file  
 
-# we have a fixture function named input_value, which supplies the input to the tests. To access the fixture function
-# Pytest while the test is getting executed, will see the fixture name as input parameter. 
-# It then executes the fixture function and the returned value is stored to the input parameter, which can be used by the test.
+#Pytest- Conftest.py
+# conftest.py is used to share fixtures among multiple test files.
+# conftest.py is used to define fixtures or hooks that are shared across multiple test files.
+# Create a new file conftest.py and add the below code into it
+# conftest.py
+import pytest
+@pytest.fixture
+def input_value():
+   input = 39
+   return input
+# Now, we can use the fixture in multiple test files.
+# test_sample(remove fixture from the test file)
+def test_divisible_by_3(input_value):
+    assert input_value % 3 == 0
+def test_divisible_by_6(input_value):
+    assert input_value % 6 == 0
+# Create a new file test_div_by_13.py −
+# test_div_by_13.py
+def test_divisible_by_13(input_value):
+    assert input_value % 13 == 0
+# Now, we can run the tests in both the files using the command: pytest -v
+# The fixture input_value is shared between the two test files.
+# pytest -k "test_divisible_by_3" test_div_by_13.py is used to run a specific test case in the file
+
+# Parametrizing Tests
+# Parametrizing tests allows you to run the same test with different inputs.
+# we can use the pytest.mark.parametrize decorator to pass the input values to the test functions.
+# Example:
+# test_parametrize.py
+import pytest 
+@pytest.mark.parametrize("num, output",[(1,11),(2,22),(3,35),(4,44)])
+def test_multiplication_11(num, output):
+    assert 11*num == output
+# to run the test, use the command: pytest -v test_parametrize.py
+# pytest -k "test_multiplication_11" test_parametrize.py is used to run a specific test case in the file
+# The test_multiplication_11 test is run four times with different input values.
+
+# Pytest - Xfail/Skip Tests
+# Sometimes, we may want to skip some tests or mark them as xfail,  but it will not be considered as part failed.
+# pytest.mark.skip is used to skip the test.
+# pytest.mark.xfail is used to mark the test as xfail.
+# Example:
+# test_xfail.py
+import pytest
+@pytest.mark.xfail
+def test_failed():
+    assert False
+@pytest.mark.skip
+def test_skipped():
+    assert False
+# to run the test, use the command: pytest -v test_xfail.py
+# pytest -k "test_failed" test_xfail.py is used to run a specific test case in the file
+# The test_failed test is marked as xfail and the test_skipped test is skipped.
+
