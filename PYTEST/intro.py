@@ -124,12 +124,72 @@ def test_multiplication_11(num, output):
 # test_xfail.py
 import pytest
 @pytest.mark.xfail
-def test_failed():
-    assert False
+@pytest.mark.great
+def test_greater():
+   num = 100
+   assert num > 100
+
+@pytest.mark.xfail
+@pytest.mark.great
+def test_greater_equal():
+   num = 100
+   assert num >= 100
+
 @pytest.mark.skip
-def test_skipped():
-    assert False
+@pytest.mark.others
+def test_less():
+   num = 100
+   assert num < 200
 # to run the test, use the command: pytest -v test_xfail.py
 # pytest -k "test_failed" test_xfail.py is used to run a specific test case in the file
 # The test_failed test is marked as xfail and the test_skipped test is skipped.
+'''
+test_compare.py::test_greater xfail
+test_compare.py::test_greater_equal XPASS
+test_compare.py::test_less SKIPPED
+============================ 1 skipped, 1 xfailed, 1 xpassed in 0.06 seconds
+'''
 
+# Pytest - Stop Test Suite after N Test Failures
+# Sometimes, we may want to stop the test suite after N number of test failures.
+# The -x option is used to stop the test suite after the first failure.\
+# Example:
+# test_stop_after_n_failures.py
+import pytest
+def test_failed():
+   assert 1 == 2
+def test_failed_2():
+    assert 2 == 3
+def test_failed_3():
+    assert 3 == 4
+# to run the test, use the command: pytest -v test_stop_after_n_failures.py maxfail=2(after 2 failures, the test suite will stop)
+
+
+##Pytest - HTML Reports
+# Pytest can generate HTML reports for the test results.
+# The pytest-html plugin is used to generate HTML reports.
+# To install pytest-html, run the command: pip install pytest-html
+# Example:
+# test_html_report.py
+import pytest
+def test_passing():
+   assert (1,2,3) == (1,2,3)
+def test_failing():
+    assert (1,2,3) == (3,2,1)
+# to run the test, use the command: pytest -v test_html_report.py --html=report.html
+
+#Pytest - Run Tests in Parallel
+# Pytest can run tests in parallel to reduce the execution time.
+# The pytest-xdist plugin is used to run tests in parallel.
+# To install pytest-xdist, run the command: pip install pytest-xdist
+# Example:
+# test_parallel.py
+import pytest
+import time
+def test_parallel_1():
+   time.sleep(5)
+   assert 1 == 1
+def test_parallel_2():
+    time.sleep(5)
+    assert 2 == 2
+# to run the test, use the command: pytest -v -n 2 test_parallel.py
