@@ -67,24 +67,34 @@ else:
 #using regex
 import re
 
-def get_up_interfaces(interface_output):
-    pattern = r"(?P<interface>\S+)\s+\S+\s+up"
-    matches = re.finditer(pattern, interface_output)
-    up_interfaces = [match.groupdict("interface") for match in matches]
-    return up_interfaces
+def status(interface_data):
+    # Updated regex to capture interface, IP, and state
+    pattern = r"(?P<interface>\S+)\s+(?P<ip>\S+)\s+(?P<state>\S+)"
+    matches = re.finditer(pattern, interface_data)
+    details = [match.groupdict() for match in matches if match.group('state') == 'up']  # Collect all details as dictionaries
+    return details
 
-interface_output = """
-GigabitEthernet0/0   192.168.1.1   up
-GigabitEthernet0/1   192.168.1.2   down
-FastEthernet0/0      10.0.0.1      up
-FastEthernet0/1      10.0.0.2      down
-"""
+interface_data = '''
+gigabitethernet0/1  192.168.1.1   up
+gigabitethernet0/2  192.168.1.2   down
+gigabitethernet0/3  192.168.1.3   down
+gigabitethernet0/4  192.168.1.4   down
+'''
 
-up_interfaces = get_up_interfaces(interface_output)
+details = status(interface_data)
 
-if up_interfaces:
-    print("Interfaces in 'up' state:")
-    for interface in up_interfaces:
-        print(interface)
-else:
-    print("No interfaces are in the 'up' state.")
+# Print all interface details
+for detail in details:
+    print(f"Interface: {detail['interface']}, IP: {detail['ip']}, State: {detail['state']}")
+
+# Accessing details list
+for idx, detail in enumerate(details):
+    print(f"Details for Interface {idx + 1}: {detail}")
+
+# Attempt to use dictionary-specific methods on the list will raise an error
+# To access keys/values for individual dictionaries in the list:
+for detail in details:
+    print(f"Keys: {detail.keys()}")
+    print(f"Values: {detail.values()}")
+    print(f"Items: {detail.items()}")
+
