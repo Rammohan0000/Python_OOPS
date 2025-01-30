@@ -113,7 +113,7 @@ for i in range(1, 11):
         continue  # Skip even numbers
     print(i)
 
-
 # pass statement
 for i in range(1, 11):
     pass  # No operation is performed. It is used as a placeholder when no action is required
+

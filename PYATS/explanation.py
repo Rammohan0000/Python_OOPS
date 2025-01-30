@@ -68,6 +68,20 @@ device.connect()
 output = device.execute('show version')
 print(output)
 
+#suppose we have to connect to multiple devices and execute multiple commands
+from genie.testbed import load
+testbed = load('working-tb.yaml')
+testbed.connect()
+commands = ['show version', 'show interface']
+# Define the list of commands to execute on each device
+commands = ['show version', 'show interfaces']
+for device in testbed.devices.values():
+    print(f"Executing commands on {device.name}")
+    for command in commands:
+        output = device.execute(command)
+        print(f"Output of '{command}' on {device.name}:\n{output}\n")
+        
+
 # parsers
 from pprint import pprint
 parsed = device.parse('show version')

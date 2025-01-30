@@ -1,7 +1,7 @@
 # Assertion is used to check whether a condition is True, and if it is False, the program raises an AssertionError exception.
 # Helps in validating assumption during development.
 # syntax of assert follows 
-assert condition, "Optional error message"
+# assert condition, "Optional error message"
 # If the condition is True, the program will continue to execute. If the condition is False, the program will raise an AssertionError exception with the optional error message.
 # example
 x = 10
@@ -20,7 +20,7 @@ class TestMath(unittest.TestCase):
     def test_addition(self):
         self.assertEqual(2 + 3, 5) 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(argv=['first-arg-is-ignored'], exit=False) # Ignores the extra arguments injected by Jupyter.
 
 # 3. AssertNotEqual()
 import unittest
@@ -28,16 +28,16 @@ class TestMath(unittest.TestCase):
     def test_subtraction(self):
         self.assertNotEqual(10 - 5, 3)  
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(argv=['first-arg-is-ignored'], exit=False)
 
 # 4. AssertTrue() and AssertFalse()
 import unittest
 class TestBoolean(unittest.TestCase):
     def test_boolean(self):
         self.assertTrue(3 > 2)  
-        self.assertFalse(2 > 3)  
+        self.assertFalse(2 < 3)  
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(argv=['first-arg-is-ignored'], exit=False)
 
 # 5. AssertIn() and AssertNotIn()
 import unittest
@@ -47,7 +47,7 @@ class TestMembership(unittest.TestCase):
         self.assertIn("apple", fruits)  
         self.assertNotIn("grape", fruits) 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(argv=['first-arg-is-ignored'], exit=False)
 
 # AssertRaises()
 import unittest
