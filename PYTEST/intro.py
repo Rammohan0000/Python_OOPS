@@ -103,6 +103,34 @@ def test_divisible_by_13(input_value):
 # The fixture input_value is shared between the two test files.
 # pytest -k "test_divisible_by_3" test_div_by_13.py is used to run a specific test case in the file
 
+#Pytest.fixture(scope='module')
+import pytest
+@pytest.fixture(scope='module')
+def setup_module():
+    print("\n[SETUP] Initializing module-level resource")
+    data = {"name": "pytest", "version": "7.0"}
+    yield data  
+    print("\n[CLEANUP] Tearing down module-level resource")
+
+def test_case1(setup_module):
+    print("Running test_case1")
+    assert setup_module["name"] == "pytest"
+
+def test_case2(setup_module):
+    print("Running test_case2")
+    assert setup_module["version"] == "7.0"
+
+# The setup_module fixture is executed only once before all the test functions in the module.
+# output:
+'''
+[SETUP] Initializing module-level resource
+Running test_case1
+[CLEANUP] Tearing down module-level resource
+[SETUP] Initializing module-level resource
+Running test_case2
+[CLEANUP] Tearing down module-level resource
+'''
+
 # Parametrizing Tests
 # Parametrizing tests allows you to run the same test with different inputs.
 # we can use the pytest.mark.parametrize decorator to pass the input values to the test functions.
