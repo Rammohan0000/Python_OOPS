@@ -67,7 +67,7 @@ device = testbed.devices['nx-osv-1']
 device.connect()
 output = device.execute('show version')
 print(output)
-
+                                 
 #suppose we have to connect to multiple devices and execute multiple commands
 from genie.testbed import load
 testbed = load('working-tb.yaml')

@@ -28,9 +28,9 @@ print(result)
 #Authorization decorator
 def auth_decorator(func):
     def wrapper(user):
+        func(user) 
         if user == "admin":
             print("Access granted")
-            func(user)  # Pass the user to sensitive_action
         else:
             print("Access denied")
     return wrapper
@@ -40,30 +40,6 @@ def sensitive_action(user):
 sensitive_action("admin")
 sensitive_action("guest")
 
-def hello_decorator(func):
-    def inner1(*args, **kwargs):
-        
-        print("before Execution")
-        
-        # getting the returned value
-        returned_value = func(*args, **kwargs)
-        print("after Execution")
-        
-        # returning the value to the original frame
-        return returned_value
-        
-    return inner1
-
-# adding decorator to the function
-@hello_decorator
-def sum_two_numbers(a, b):
-    print("Inside the function")
-    return a + b
-
-a, b = 1, 2
-
-# getting the value through return of the function
-print("Sum =", sum_two_numbers(a, b))
 
 # chaining decorator
 def decor1(func): 
@@ -79,7 +55,7 @@ def decor(func):
     return inner 
 @decor1
 @decor
-def num(): 
+def num(): # bottom-up execution 10*2 = 20, 20*20 = 400
     return 10
 @decor
 @decor1
