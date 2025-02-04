@@ -182,3 +182,8 @@ def reverse_case(lst):
 lst = input("enter the string: ").split(' ')
 print(reverse_case(lst))
 
+# sum of even elements at odd indices
+def even_count(lst):
+    return sum(i for i in lst if i %2==0)
+lst = list(map(int, input("Enter the nos: ").split()))
+print(even_count(lst))
