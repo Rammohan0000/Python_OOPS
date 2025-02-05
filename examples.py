@@ -187,3 +187,10 @@ def even_count(lst):
     return sum(i for i in lst if i %2==0)
 lst = list(map(int, input("Enter the nos: ").split()))
 print(even_count(lst))
+
+# converting lower case to upper case
+def test(strs: list[str]) -> list[str]:
+    return [s.upper() for s in strs]
+result = test(['hello', 'world'])
+print(result)
+
