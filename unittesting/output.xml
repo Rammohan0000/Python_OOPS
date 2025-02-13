@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.1 on win32)" generated="2025-02-13T18:07:32.529563" rpa="false" schemaversion="5">
+<suite id="s1" name="Rbt" source="C:\Users\randaluri\Python_OOPS\unittesting\rbt.robot">
+<test id="s1-t1" name="Configure OSPF and Validate" line="18">
+<kw name="Open Connection" owner="SSHLibrary">
+<arg>${ROUTER_IP}</arg>
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<status status="PASS" start="2025-02-13T18:07:33.875411" elapsed="0.006036"/>
+</kw>
+<kw name="Login" owner="SSHLibrary">
+<msg time="2025-02-13T18:07:33.882029" level="INFO">Logging into '192.168.1.1:22' as 'admin'.</msg>
+<msg time="2025-02-13T18:07:36.892313" level="FAIL">TimeoutError: timed out</msg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<status status="FAIL" start="2025-02-13T18:07:33.881839" elapsed="3.017100">TimeoutError: timed out</status>
+</kw>
+<kw name="Enter Configuration Mode">
+<status status="NOT RUN" start="2025-02-13T18:07:36.899494" elapsed="0.000027"/>
+</kw>
+<kw name="Configure OSPF">
+<status status="NOT RUN" start="2025-02-13T18:07:36.899816" elapsed="0.000021"/>
+</kw>
+<kw name="Save Configuration">
+<status status="NOT RUN" start="2025-02-13T18:07:36.900054" elapsed="0.000018"/>
+</kw>
+<kw name="Validate OSPF Configuration">
+<status status="NOT RUN" start="2025-02-13T18:07:36.900322" elapsed="0.000030"/>
+</kw>
+<kw name="Close Connection" owner="SSHLibrary">
+<doc>Closes the current connection.</doc>
+<status status="NOT RUN" start="2025-02-13T18:07:36.900679" elapsed="0.000028"/>
+</kw>
+<status status="FAIL" start="2025-02-13T18:07:33.874623" elapsed="3.026501">TimeoutError: timed out</status>
+</test>
+<status status="FAIL" start="2025-02-13T18:07:32.531593" elapsed="4.370932"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Rbt" id="s1" pass="0" fail="1" skip="0">Rbt</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
