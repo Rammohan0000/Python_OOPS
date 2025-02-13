@@ -50,6 +50,18 @@ def swap_first_last_char(str):
 str = input("Enter a string: ")
 print(swap_first_last_char(str))
 
+# reverse a list without using in-build fucnctions
+l = [1,2,3,4,5,6,7,8]
+l2 = []
+for i in range(len(l)-1, -1, -1):
+    l2.append(l[i])
+print(l2)    
+
+# move 0's at the right end
+l = [1,0,2,0,3,0,4,0,5,6,7]
+result = [x for x in l if x!=0] + [0] * l.count(0)
+print(result)
+
 #remove nth index character from a string
 def remove_char(str, n):
     first_part = str[:n] 

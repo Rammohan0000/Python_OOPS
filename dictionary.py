@@ -118,6 +118,17 @@ values = 'NA'
 result = dict.fromkeys(keys,values)
 print(result)
 
+#adding two dictionaries
+dict1 = {'name': 'ram', 'age': 25}
+dict2 = {'name': 'kasai', 'city': 'NY'}
+dict3 = {key: [dict1.get(key), dict2.get(key)] for key in dict1.keys() | dict2.keys()}
+print(dict3)
+
+# swapping keys,values
+dict4 = {'rohit' : 'odi', 'age': 37}
+dict5 = {v:k for k,v in dict4.items()}
+print(dict5)
+
 '''
 Method	      Description
 clear()	      Removes all the elements from the dictionary
