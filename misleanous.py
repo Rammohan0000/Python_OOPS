@@ -57,6 +57,20 @@ def replace_vowels(s):
 s = input("Enter a string: ")
 print("String after replacing vowels:", replace_vowels(s))
 
+#camel to snake
+def camel_to_snake(s):
+    result = [s[0].lower()]
+    for char in s[1:]:
+        if char.isupper():
+            result.append('_')
+            result.append(char.lower())
+        else:
+            result.append(char)
+    return ''.join(result)
+input_string = 'PythonExercises'
+output_string = camel_to_snake(input_string)
+print(output_string)
+
 # swap first and last element
 def swap_first_last(lst):
     lst[0], lst[-1] = lst[-1], lst[0]
