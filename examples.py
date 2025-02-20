@@ -15,6 +15,18 @@ def occurances(lst):
 lst = list(map(int,input("enter the nos: ").split(' ')))
 print(occurances(lst))
         
+#armstrong number
+def is_armstrong(number):
+    num_str = str(number)  # Convert number to string
+    num_digits = len(num_str)  # Count number of digits
+    armstrong_sum = sum(int(digit) ** num_digits for digit in num_str)  # Compute Armstrong sum
+    return armstrong_sum == number  # Check if Armstrong sum matches original number
+num = int(input("Enter a number: "))
+if is_armstrong(num):
+    print(f"{num} is an Armstrong number!")
+else:
+    print(f"{num} is NOT an Armstrong number.")
+      
 # write a python program that takes integers between 0 to 999 and return true if which all differ by 10 from one another
 def differ_by_10(lst):
     for i in range(len(lst)-1):
