@@ -35,6 +35,13 @@ def second_largest(lst):
 lst = list(map(int, input("Enter the list of numbers: ").split()))
 print("2nd largest:", second_largest(lst))
 
+# find first non repeated value in a list
+mylist = [2, 5, 6, 7, 8, 9, 10, 5, 2, 6]
+for num in mylist:
+    if mylist.count(num) == 1:
+        print(num)
+        break
+
 #count vowels in a string
 def count_vowels(s):
     vowels = 'aeiouAEIOU'
@@ -154,8 +161,6 @@ def length_last_word(s):
     return 0
 s = input("Enter a string: ")
 print("Length of the last word:", length_last_word(s))
-
-
 
 #count particular word in a sentence
 def count_word_occurrences(sentence, word):

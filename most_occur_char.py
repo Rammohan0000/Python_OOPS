@@ -11,6 +11,19 @@ def occurance(str):
 str = input("Enter a string: ")
 print(occurance(str))
 
+# list with unique elements with first element
+def occurrence(lst):
+    freq_dict = {}
+    for item in lst:
+        if item in freq_dict:
+            freq_dict[item] += 1
+        else:
+            freq_dict[item] = 1
+    unique_keys = [key for key, value in freq_dict.items() if value == 1]   
+    return unique_keys[0]
+mylist = [2, 5, 6, 7, 8, 9, 10, 5, 2, 6]
+print(occurrence(mylist))
+
 # most occurring character                                                 
 def new(s):
     most = max(s, key = s.count)
