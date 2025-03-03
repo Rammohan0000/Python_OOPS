@@ -71,6 +71,52 @@ def split_string(s):
 s = input("enter the string: ")
 print(split_string(s))
 
+#find substring in a string
+def find_substring(s,sub):
+    return s.find(sub)
+s = input("enter the string: ")
+sub = input("enter the substring: ")
+print(find_substring(s,sub))
+
+# find abc in a string
+import re
+text = 'abcxyzsdghiueabcxyzadjnsadkjhefaoiuahaaabaabaabababaxyxyxyxasdaaaaabcabcxyzxyz'
+matches = list(re.finditer('abc', text))
+for match in matches:
+    print(f"Found 'abc' at: {match.start()}")
+for idx, char in enumerate(text):
+    if char == 'a':
+        print(f"The index of 'a' is: {idx}")
+
+# find the first non-repeating character in a string
+def first_non_repeating_char(s):
+    for char in s:
+        if s.count(char) == 1:
+            return char
+    return None
+s = input("enter the string: ")
+print(first_non_repeating_char(s))
+
+# find second most repeated character in a string
+def second_most_repeated_char(s):
+    char_count = {}
+    for char in s:
+        if char in char_count:
+            char_count[char] += 1
+        else:
+            char_count[char] = 1
+    sorted_char_count = sorted(char_count.items(), key=lambda x: x[1], reverse=True)
+    return sorted_char_count[1][0]
+s = input("enter the string: ")
+print(second_most_repeated_char(s))
+
+# find second largest word in  a string
+def second_largest_word(s):
+    words = s.split()
+    words.sort(key=len)
+    return words[-2]
+s = input("enter the string: ")
+print(second_largest_word(s))
 
 # write a python program that contains exactly 4 distinct values across the list such that no value is repeated more than once consecutively among the first 20 numbers
 def test(nums):

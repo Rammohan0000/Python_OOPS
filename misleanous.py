@@ -35,6 +35,19 @@ def second_largest(lst):
 lst = list(map(int, input("Enter the list of numbers: ").split()))
 print("2nd largest:", second_largest(lst))
 
+#wipro 2nd question
+sentence = '''Peter Piper picked a peck of pickled peppers
+A peck of pickled peppers Peter Piper picked
+If Peter Piper picked a peck of pickled peppers'''
+words = sentence.split()
+word_counts = {}
+for word in words:
+    word_counts[word] = word_counts.get(word, 0) + 1
+print("Word count:", word_counts)
+#unique values
+unique_words = set(words)
+print("Unique words:", unique_words)
+
 # find first non repeated value in a list
 mylist = [2, 5, 6, 7, 8, 9, 10, 5, 2, 6]
 for num in mylist:
