@@ -48,6 +48,20 @@ print("Word count:", word_counts)
 unique_words = set(words)
 print("Unique words:", unique_words)
 
+#first and second higheest calculation
+def highest_paid(employees_data):
+    most = max(employees_data, key=employees_data.get)
+    sorted_dict = sorted(employees_data.items(), key = lambda x:x[1],reverse=True)
+    return  most,sorted_dict[1][0]
+employees_data = {
+    "Alice": 60000,
+    "Bob": 75000,
+    "Charlie": 50000,
+    "David": 90000
+}
+s=highest_paid(employees_data)
+print(f"the first highest_paid employee was {s[0]} and second highest paid employee was {s[1]}")
+
 # find first non repeated value in a list
 mylist = [2, 5, 6, 7, 8, 9, 10, 5, 2, 6]
 for num in mylist:

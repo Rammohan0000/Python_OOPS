@@ -34,8 +34,20 @@ print(f"the most occured character is '{result[0]}' with frequency of {result[1]
 
 #longest word
 def find_longest_word(sentence):
-    words = sentence.split()  # Split the sentence into words
-    longest_word = max(words, key=len)  # Find the word with the maximum length
+    words = sentence.split()  
+    longest_word = max(words, key=len) 
+    return longest_word
+sentence = "Python programming is both fun and challenging"
+longest = find_longest_word(sentence)
+print(f"The longest word is: {longest}")
+
+#without using in-build functions
+def find_longest_word(sentence):
+    words = sentence.split()  
+    longest_word = "" 
+    for word in words:  
+        if len(word) > len(longest_word):  
+            longest_word = word  
     return longest_word
 sentence = "Python programming is both fun and challenging"
 longest = find_longest_word(sentence)
@@ -43,8 +55,8 @@ print(f"The longest word is: {longest}")
 
 #shortest word  
 def find_shortest_word(sentence):
-    words = sentence.split()  # Split the sentence into words
-    shortest_word = min(words, key=len)  # Find the word with the minimum length
+    words = sentence.split()  
+    shortest_word = min(words, key=len)  
     return shortest_word
 sentence = "Python programming is both fun and challenging" 
 shortest = find_shortest_word(sentence)
