@@ -105,6 +105,12 @@ input_string = 'PythonExercises'
 output_string = camel_to_snake(input_string)
 print(output_string)
 
+#replace_with$
+word = 'Python_Exercises_are_difficult'
+parts = word.split('_')
+result = '$'.join(parts)
+print(result)
+
 # swap first and last element
 def swap_first_last(lst):
     lst[0], lst[-1] = lst[-1], lst[0]
