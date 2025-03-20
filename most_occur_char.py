@@ -32,6 +32,19 @@ s = input("Enter the String: ")
 result = new(s)
 print(f"the most occured character is '{result[0]}' with frequency of {result[1]} ")
 
+#without max function
+def new(s):
+    freq_dict = {}
+    most_freq, max_count = None, 0
+    for char in s:
+        freq_dict[char] = freq_dict.get(char, 0) + 1
+        if freq_dict[char] > max_count:
+            most_freq,max_count = char, freq_dict[char]
+    return most_freq, max_count
+s = input("Enter the String: ")
+result = new(s)
+print(f"the most occured character is '{result[0]}' with frequency of {result[1]} ")
+
 #longest word
 def find_longest_word(sentence):
     words = sentence.split()  
@@ -67,6 +80,16 @@ def count_words(sentence):
     words = sentence.split()  # Split the sentence into words
     return len(words)
 sentence = "Python programming is both fun and challenging" 
+print(f"The number of words in the sentence is: {count_words(sentence)}")
+
+#without len function
+def count_words(sentence):
+    words = sentence.split()  # Split the sentence into words
+    count = 0  # Initialize counter
+    for _ in words:  # Iterate over words
+        count += 1   # Increment counter
+    return count
+sentence = "Python programming is both fun and challenging"
 print(f"The number of words in the sentence is: {count_words(sentence)}")
 
 #swipe first and last character of a string
