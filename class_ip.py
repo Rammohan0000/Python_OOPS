@@ -98,3 +98,22 @@ for detail in details:
     print(f"Values: {detail.values()}")
     print(f"Items: {detail.items()}")
 
+# without regex
+def status(interface_data):
+    details = []
+    for line in interface_data.strip().split("\n"):
+        parts = line.split()  # Split by whitespace
+        if len(parts) == 3:  # Ensure valid line structure
+            interface, ip, state = parts  # Unpack values
+            if state.lower() == "up":  # Check if state is "up"
+                details.append({"interface": interface, "ip": ip, "state": state})
+    return details
+interface_data = '''
+gigabitethernet0/1  192.168.1.1   up
+gigabitethernet0/2  192.168.1.2   down
+gigabitethernet0/3  192.168.1.3   down
+gigabitethernet0/4  192.168.1.4   up
+'''
+details = status(interface_data)
+for detail in details:
+    print(f"Interface: {detail['interface']}, IP: {detail['ip']}, State: {detail['state']}")
