@@ -78,6 +78,17 @@ s = input("enter the string: ")
 sub = input("enter the substring: ")
 print(find_substring(s,sub))
 
+#without using find
+def find_substring(s,sub):
+    for i in range(len(s)-len(sub)+1):
+        if s[i:i+len(sub)] == sub:
+            return i
+    return -1
+s = input("enter the string: ") 
+sub = input("enter the substring: ")
+print(find_substring(s,sub))
+
+
 # find abc in a string
 import re
 text = 'abcxyzsdghiueabcxyzadjnsadkjhefaoiuahaaabaabaabababaxyxyxyxasdaaaaabcabcxyzxyz'

@@ -92,6 +92,19 @@ pattern = r"\d{4}-\d{2}-\d{2}"
 dates = re.findall(pattern, text)
 print(dates)
 
+# without using regex
+def extract_dates(text):
+    words = text.split()  # Split text into words
+    dates = []  
+    for word in words:
+        parts = word.split('-')  # Check if it contains '-'
+        if len(parts) == 3 and all(part.isdigit() for part in parts):  # Ensure all parts are digits
+            dates.append(word)  # Append valid date   
+    return dates
+text = "Today's date is 2024-12-19 and yesterday was 2024-12-18."
+dates = extract_dates(text)
+print(dates)
+
 # using finditer()
 import re
 text = "apple, banana, grape, mango, pineapple"
