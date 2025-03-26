@@ -117,3 +117,45 @@ gigabitethernet0/4  192.168.1.4   up
 details = status(interface_data)
 for detail in details:
     print(f"Interface: {detail['interface']}, IP: {detail['ip']}, State: {detail['state']}")
+
+
+# wipro question extract the peer address and state from the given output.
+import re
+
+out = '''===============================================================================
+BGP Neighbor
+===============================================================================
+-------------------------------------------------------------------------------
+Peer  : 10.10.1.1
+Group : igp
+-------------------------------------------------------------------------------
+Peer AS              : 65001            Peer Port            : 51580
+Peer Address         : 10.10.1.1
+Local AS             : 65002            Local Port           : 179
+Local Address        : 10.10.1.2
+Peer Type            : External         
+State                : Established      Last State           : Established
+Last Event           : recvKeepAlive   
+Last Error           : Cease (Connection Collision Resolution)
+Local Family         : IPv4
+Remote Family        : IPv4
+Hold Time            : 90               Keep Alive           : 30'''
+# Regex patterns to match Peer Address and State
+peer_address_pattern = r"Peer Address\s+:\s+(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})"
+state_pattern = r"State\s*:\s*(\S+)"
+keep_alive_pattern = r"Keep Alive\s+:\s+(\d{1,2}+)"
+# Extract values using regex
+peer_address_match = re.search(peer_address_pattern, out)
+state_match = re.search(state_pattern, out)
+keep_match = re.search(keep_alive_pattern, out)
+print(peer_address_match)
+print(state_match)
+print(keep_match)
+# Store results in dictionary
+bgp_details = {
+    "Peer Address": peer_address_match.group(1) if peer_address_match else None,
+    "State": state_match.group(1) if state_match else None,
+    "Keep Alive": keep_match.group(1) if keep_match else None
+}
+# Print the extracted details
+print(bgp_details)

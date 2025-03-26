@@ -263,3 +263,47 @@ def test(strs: list[str]) -> list[str]:
 result = test(['hello', 'world'])
 print(result)
 
+# find words with vowels and consonants
+inputs = ['sky', 'apple', 'tree', 'rhythm', 'free', 'cat', 'gym']
+out_vowels = []
+out_conso = []
+vowels = 'aeiouAEIOU'
+for word in inputs:
+    if any(char in vowels for char in word):  
+        out_vowels.append(word)
+    else:
+        out_conso.append(word)
+print("Words with vowels:", out_vowels)
+print("Words with only consonants:", out_conso)
+
+#2nd highest number
+l = [1,7,3,2,7,2]
+
+freq_dict = {}
+
+for num in l:
+    freq_dict[num] = freq_dict.get(num,0) + 1 
+print(freq_dict)  
+most_freq, max_count = None,0
+if freq_dict[num] > max_count:
+    most_freq, max_count = num , freq_dict[num] 
+    print(most_freq, max_count)
+x = sorted(freq_dict.items(), key = lambda x: x[1], reverse = 'True')
+print(x[1][0])
+
+# find the sum of two numbers equal to target
+def two_sum(nums, target):
+    for i in range(len(nums)):
+        for j in range(i+1,len(nums)):
+            if nums[i] + nums[j] == target:
+                return [i,j] # for indices
+                return [nums[i],nums[j]] # for values
+    return None
+nums = [2,7,11,15]
+target = 9
+print(two_sum(nums,target))
+
+
+
+
+

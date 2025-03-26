@@ -237,3 +237,29 @@ for detail in details:
     print(f"Keys: {detail.keys()}")
     print(f"Values: {detail.values()}")
     print(f"Items: {detail.items()}")
+
+# extract words which are ending with vowels
+import re
+def vowels(inputs):
+    pattern = re.compile(r'[aeiou]$')
+    matches = [word for word in inputs if pattern.search(word)]
+    return matches
+inputs = ['cat', 'dog', 'free', 'tree']
+print(vowels(inputs))
+
+# extract words which are starting with vowels
+import re
+inputs = ['ct', 'dog', 'apple', 'orange']
+out_vowels = []
+out_conso = []
+pattern = re.compile(r'[aeiouAEIOU]')  # Pattern to check if a word contains at least one vowel
+
+for word in inputs:
+    if pattern.search(word):  # If a vowel is found in the word
+        out_vowels.append(word)
+    else:
+        out_conso.append(word)
+
+print("Words with vowels:", out_vowels)
+print("Words with only consonants:", out_conso)
+
