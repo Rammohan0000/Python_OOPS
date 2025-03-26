@@ -303,6 +303,17 @@ nums = [2,7,11,15]
 target = 9
 print(two_sum(nums,target))
 
+#Sorting numbers without using sorted
+l = [1, 4, 5, 3, 2]
+
+# Bubble Sort logic
+for i in range(len(l)):
+    for j in range(len(l) - i - 1):
+        if l[j] > l[j + 1]:  # Swap if elements are out of order
+            l[j], l[j + 1] = l[j + 1], l[j]
+
+print("Sorted list:", l)
+
 
 
 
