@@ -99,6 +99,14 @@ for idx, char in enumerate(text):
     if char == 'a':
         print(f"The index of 'a' is: {idx}")
 
+#without regex
+input_str = 'abacdeifabcedcjhfuabc'
+pattern = 'abc'
+index = input_str.find(pattern)  # First occurrence
+while index != -1:
+    print(f"{pattern} has occurred at {index} and ends at {index + len(pattern)}")
+    index = input_str.find(pattern, index + 1)  # Find next occurrence
+
 # find the first non-repeating character in a string
 def first_non_repeating_char(s):
     for char in s:
