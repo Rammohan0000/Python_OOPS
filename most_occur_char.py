@@ -278,3 +278,4 @@ def three_numbers(nums, target):
 nums = [10,20,10,40,50,60,70]
 target = 70
 print(three_numbers(nums, target))
+
