@@ -217,3 +217,53 @@ print(ord(a))
 a = 65
 print(chr(a))
 
+# find sum of two numbers equal to target
+def two_numbers(nums, target):
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return nums[i], nums[j]
+    return "No such numbers found"
+nums = [10,20,10,40,50,60,70]
+target = 50
+print(two_numbers(nums, target))
+
+# sorting a list of tupeles based on the second element
+def sort_list(tuples):
+    return sorted(tuples, key = lambda x: x[1]) 
+tuples = [(1, 2), (3, 4), (1, 1), (5, 6), (7, 8), (1, 3)]
+print(sort_list(tuples))
+
+# sorting without using in-build functions
+def sort_list(nums):
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            if nums[i] > nums[j]:
+                nums[i] , nums[j] = nums[j], nums[i]
+    return nums
+nums = [10, 20, 5, 6, 7, 8, 9]
+print(sort_list(nums))
+
+# sorting a string in alphabetical order
+def sort_string(str):
+    return ''.join(sorted(str))     
+str = input("Enter a string: ")
+print(sort_string(str))
+
+# sorting a string without using in-build functions
+def sort_string(str):
+    str = list(str)
+    for i in range(len(str)):
+        for j in range(i+1, len(str)):
+            if str[i] > str[j]:
+                str[i], str[j] = str[j], str[i]
+    return ''.join(str)
+str = input("Enter a string: ")
+print(sort_string(str))
+
+# sorting a string in reverse order
+def sort_string(str):
+    return ''.join(sorted(str, reverse = True)) 
+str = input("Enter a string: ")
+print(sort_string(str)) 
+
