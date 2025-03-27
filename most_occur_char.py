@@ -234,6 +234,16 @@ def sort_list(tuples):
 tuples = [(1, 2), (3, 4), (1, 1), (5, 6), (7, 8), (1, 3)]
 print(sort_list(tuples))
 
+# sorting a tuple without using in-build functions
+def sort_tuple(tuples):
+    for i in range(len(tuples)):
+        for j in range(i+1, len(tuples)):
+            if tuples[i][1] > tuples[j][1]:
+                tuples[i], tuples[j] = tuples[j], tuples[i]
+    return tuples
+tuples = [(1, 2), (3, 4), (1, 1), (5, 6), (7, 8), (1, 3)]
+print(sort_tuple(tuples))
+
 # sorting without using in-build functions
 def sort_list(nums):
     for i in range(len(nums)):
