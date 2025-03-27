@@ -267,3 +267,14 @@ def sort_string(str):
 str = input("Enter a string: ")
 print(sort_string(str)) 
 
+# find the sum of three numbers equal to target
+def three_numbers(nums, target):
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            for k in range(j+1, len(nums)):
+                if nums[i] + nums[j] + nums[k] == target:
+                    return nums[i], nums[j], nums[k]
+    return "No such numbers found"
+nums = [10,20,10,40,50,60,70]
+target = 70
+print(three_numbers(nums, target))
