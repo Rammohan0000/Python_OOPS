@@ -180,6 +180,26 @@ def most_unique_characters(strs):
 strs = ['cat', 'catatatatctsa', 'abcdefhijklmnop', '124259239185125', '', 'foo', 'unique']
 print(most_unique_characters(strs))
 
+#without using set and max function
+def count_unique_chars(s):
+    unique_chars = []
+    for char in s:
+        if char not in unique_chars:
+            unique_chars.append(char)
+    return len(unique_chars)
+def most_unique_characters(strs):
+    max_unique_str = ""
+    max_unique_count = 0
+    for s in strs:
+        unique_count = count_unique_chars(s)
+        if unique_count > max_unique_count:
+            max_unique_count = unique_count
+            max_unique_str = s
+    return max_unique_str
+strs = ['cat', 'catatatatctsa', 'abcdefhijklmnop', '124259239185125', '', 'foo', 'unique']
+print(most_unique_characters(strs))
+
+
 # write a python program to return two digit numbers only from a list
 def two_digit_numbers(nums):
     return [n for n in nums if 9 < n < 100]

@@ -159,3 +159,40 @@ bgp_details = {
 }
 # Print the extracted details
 print(bgp_details)
+
+# without regex
+out = '''===============================================================================
+BGP Neighbor
+===============================================================================
+-------------------------------------------------------------------------------
+Peer  : 10.10.1.1
+Group : igp
+-------------------------------------------------------------------------------
+Peer AS              : 65001            Peer Port            : 51580
+Peer Address         : 10.10.1.1
+Local AS             : 65002            Local Port           : 179
+Local Address        : 10.10.1.2
+Peer Type            : External         
+State                : Established      Last State           : Established
+Last Event           : recvKeepAlive   
+Last Error           : Cease (Connection Collision Resolution)
+Local Family         : IPv4
+Remote Family        : IPv4
+Hold Time            : 90               Keep Alive           : 30'''
+def extract_details(out):
+    lines = out.split("\n")  # Split the text into lines
+    bgp_details = {}
+    for line in lines:
+        parts = line.split(":")  # Split each line by `:`
+        if len(parts) > 1:
+            key = parts[0].strip()
+            value = parts[1].strip()
+
+            if key == "Peer Address":
+                bgp_details["Peer Address"] = value
+            elif key == "Local AS":
+                bgp_details["Local AS"] = value
+            elif key.startswith("State"):  # To avoid Last State confusion
+                bgp_details["State"] = value.split()[0]  # Take only the first word
+    return bgp_details
+print(extract_details(out))
