@@ -289,3 +289,39 @@ nums = [10,20,10,40,50,60,70]
 target = 70
 print(three_numbers(nums, target))
 
+# sorting dictionary with use of in-build functions
+def sort_dict(dict):
+    return {k: v for k, v in sorted(dict.items())}
+dict = {1: 10, 4: 40, 2: 20, 3: 30}
+
+# sorting dictionary based on values
+def sort_dict(dict):
+    return {k: v for k, v in sorted(dict.items(), key = lambda x: x[1])}
+dict = {1: 10, 4: 40, 2: 20, 3: 30}
+print(sort_dict(dict))
+
+# sorting without use of in-build functions
+def sort_dict(dict):
+    keys = list(dict.keys())
+    for i in range(len(keys)):
+        for j in range(i+1, len(keys)):
+            if dict[keys[i]] > dict[keys[j]]:
+                keys[i], keys[j] = keys[j], keys[i]
+    return {k: dict[k] for k in keys}
+dict = {1: 10, 4: 40, 2: 20, 3: 30}
+print(sort_dict(dict))
+
+# sorting dictionary based on values
+def sort_dict(data):
+    items = list(data.items())
+    for i in range(len(items) - 1):
+        for j in range(len(items) - i - 1):
+            if items[j][1] > items[j + 1][1]:  # Compare values
+                items[j], items[j + 1] = items[j + 1], items[j]  # Swap tuples    
+    return dict(items)
+data = {1: 10, 4: 40, 2: 20, 3: 30}
+print(sort_dict(data))
+
+
+
+

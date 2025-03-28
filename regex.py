@@ -118,7 +118,7 @@ pattern = r"(?P<day>\d{2})-(?P<month>\d{2})-(?P<year>\d{4})"
 match = re.search(pattern, "19-12-2024")
 if match:
     print(match.group("day"), match.group("month"), match.group("year"))
-
+    
 # email validation
 email = "test.email@domain.com"
 pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
