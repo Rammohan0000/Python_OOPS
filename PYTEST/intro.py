@@ -13,15 +13,15 @@ import math
 def test_sqrt():
     num = 25
     assert math.sqrt(num) == 5
-def testsquare():
+def test_square():
     num = 7
     assert 7*7 == 40
 def tesequality():
     assert 10 == 11
-
+# run with command pytest intro.py -k test_square -rA # -k is used to run a specific test case in the file, -rA is used to show all the test results including passed, failed and skipped tests.
 # run the test by running the command: pytest intro.py , if we use file_name as test, no need to mention file name explicitly, we can use pytest command to run the test
 # The function tesequality is not executed because pytest will not consider it as a test since its name is not of the format test*.   
-# use pytest -v intro.py to check verbose output
+# use pytest -v intro.py -rA to check verbose output
 # use pytest -v -s intro.py to check verbose output with print statements
 
 ##Execute subset of test cases
