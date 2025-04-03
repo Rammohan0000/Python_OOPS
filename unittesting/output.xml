@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.13.1 on win32)" generated="2025-02-13T18:07:32.529563" rpa="false" schemaversion="5">
+<robot generator="Robot 7.2.2 (Python 3.13.1 on win32)" generated="2025-02-14T09:42:40.517994" rpa="false" schemaversion="5">
 <suite id="s1" name="Rbt" source="C:\Users\randaluri\Python_OOPS\unittesting\rbt.robot">
 <test id="s1-t1" name="Configure OSPF and Validate" line="18">
 <kw name="Open Connection" owner="SSHLibrary">
 <arg>${ROUTER_IP}</arg>
 <doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
-<status status="PASS" start="2025-02-13T18:07:33.875411" elapsed="0.006036"/>
+<status status="PASS" start="2025-02-14T09:42:41.229642" elapsed="0.000507"/>
 </kw>
 <kw name="Login" owner="SSHLibrary">
-<msg time="2025-02-13T18:07:33.882029" level="INFO">Logging into '192.168.1.1:22' as 'admin'.</msg>
-<msg time="2025-02-13T18:07:36.892313" level="FAIL">TimeoutError: timed out</msg>
+<msg time="2025-02-14T09:42:41.230641" level="INFO">Logging into '192.168.1.1:22' as 'admin'.</msg>
+<msg time="2025-02-14T09:42:44.243667" level="FAIL">TimeoutError: timed out</msg>
 <arg>${USERNAME}</arg>
 <arg>${PASSWORD}</arg>
 <doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
-<status status="FAIL" start="2025-02-13T18:07:33.881839" elapsed="3.017100">TimeoutError: timed out</status>
+<status status="FAIL" start="2025-02-14T09:42:41.230471" elapsed="3.025926">TimeoutError: timed out</status>
 </kw>
 <kw name="Enter Configuration Mode">
-<status status="NOT RUN" start="2025-02-13T18:07:36.899494" elapsed="0.000027"/>
+<status status="NOT RUN" start="2025-02-14T09:42:44.257136" elapsed="0.000045"/>
 </kw>
 <kw name="Configure OSPF">
-<status status="NOT RUN" start="2025-02-13T18:07:36.899816" elapsed="0.000021"/>
+<status status="NOT RUN" start="2025-02-14T09:42:44.257724" elapsed="0.000037"/>
 </kw>
 <kw name="Save Configuration">
-<status status="NOT RUN" start="2025-02-13T18:07:36.900054" elapsed="0.000018"/>
+<status status="NOT RUN" start="2025-02-14T09:42:44.258168" elapsed="0.000034"/>
 </kw>
 <kw name="Validate OSPF Configuration">
-<status status="NOT RUN" start="2025-02-13T18:07:36.900322" elapsed="0.000030"/>
+<status status="NOT RUN" start="2025-02-14T09:42:44.258657" elapsed="0.000035"/>
 </kw>
 <kw name="Close Connection" owner="SSHLibrary">
 <doc>Closes the current connection.</doc>
-<status status="NOT RUN" start="2025-02-13T18:07:36.900679" elapsed="0.000028"/>
+<status status="NOT RUN" start="2025-02-14T09:42:44.259023" elapsed="0.000039"/>
 </kw>
-<status status="FAIL" start="2025-02-13T18:07:33.874623" elapsed="3.026501">TimeoutError: timed out</status>
+<status status="FAIL" start="2025-02-14T09:42:41.228838" elapsed="3.030642">TimeoutError: timed out</status>
 </test>
-<status status="FAIL" start="2025-02-13T18:07:32.531593" elapsed="4.370932"/>
+<status status="FAIL" start="2025-02-14T09:42:40.520081" elapsed="3.740626"/>
 </suite>
 <statistics>
 <total>
