@@ -186,6 +186,14 @@ pattern = r'^0*'
 new_ip = re.sub(pattern, '', ip_addr)
 print(new_ip)
 
+#replace all occurances of 'a' with ''
+import re
+text = ['ab', 'abc', 'abcd', 'abcde']
+pattern = r'a'
+replacement=''
+new_text = [re.sub(pattern, replacement, word) for word in text]
+print(new_text)
+
 #write a python program to validate a password
 import re
 password = input("Enter the password for validation")
