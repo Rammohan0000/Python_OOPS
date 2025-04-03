@@ -316,4 +316,59 @@ def factorial(n):
 n = int(input("Enter a number: "))
 print("Factorial:", factorial(n))
 
+# to find the longest prefix in a list of strings
+def longest_prefix(lst):
+    prefix = lst[0]
+    for s in lst[1:]:
+        while not s.startswith(prefix):
+            prefix = prefix[:-1]
+    return prefix
+lst = ['flower', 'flight', 'flow']
+print(longest_prefix(lst))
 
+# use case of flag statements
+def is_valid_password(password):
+    has_upper = False
+    has_digit = False
+    for char in password:
+        if char.isupper():
+            has_upper = True  
+        if char.isdigit():
+            has_digit = True 
+    return has_upper and has_digit  # Password is valid only if both flags are True
+password = "Hello123"
+if is_valid_password(password):
+    print("Password is strong.")
+else:
+    print("Password must contain at least one uppercase letter and one digit.")
+
+# to check whether a list has duplicates or not and return the index of the duplicate value
+def check_duplicates(lst):
+    unique_lst = {}
+    for index, value in enumerate(lst):
+        if value in unique_lst:
+            return f"Duplicate value '{value}' found at index {index}"
+        unique_lst[value] = index 
+    return "No duplicates found"
+lst = [1, 2, 3, 4, 5, 6, 1]
+print(check_duplicates(lst))
+
+# find single repeating value in a list
+def single_occurance(lst):
+    d = {}
+    for i in lst:
+        d[i] = d.get(i,0) + 1 
+        for idx, value in d.items():
+            if value == 1:
+                return value
+lst = [1,4,4,4,2,2,2]
+print(single_occurance(lst))
+        
+
+# add 1 at the end of the list
+def solve(lst):
+    lst[-1] += 1
+    return lst
+lst = [1,2,3,4]
+x = solve(lst)
+print(x) # 1,2,3,5

@@ -55,26 +55,21 @@ for i in range(n):
         print('*', end=' ')
     print()
 
-#reverse hill pattern
-n = 5
+# daimond pattern
+n = 5 
 for i in range(n):
+    for j in range(n-i):
+        print(' ', end = '')
     for j in range(i+1):
-        print('', end= ' ')
-    for j in range(i, n-1):
-            print('*', end=' ')
-    for j in range(i,n):
-        print('*', end =' ')        
-    print()
-
-# diamond pattern
-
-
-for i in range(n):
+        print('*', end= '')
+    for j in range(i):
+        print('*', end = '')
+    print()   
+for i in range(n):   
     for j in range(i+1):
-        print('', end= ' ')     #reverse hill pattern
-    for j in range(i, n-1):
-            print('*', end=' ')
-    for j in range(i,n):
-        print('*', end =' ')        
-    print()
-
+        print(' ', end='')
+    for j in range(n-i):
+        print('*', end='')
+    for j in range(n-i-1):
+        print('*', end='')
+    print()    
