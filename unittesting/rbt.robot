@@ -53,3 +53,34 @@ Validate OSPF Configuration
     ${route_output} =    Read Until Prompt
     Log    ${route_output}
     Should Contain    ${route_output}    O    # Ensure OSPF routes are learned
+
+
+# to execute with python
+# pip install robotframework
+# pip install robotframework-pythonlibcore
+
+# python - math_library.py
+class MathLibrary:
+    def add(self, a, b):
+        """Returns the sum of two numbers."""
+        return a + b
+
+    def subtract(self, a, b):
+        """Returns the difference of two numbers."""
+        return a - b
+
+# robotframework
+*** Settings ***
+Library  math_library.py
+
+*** Test Cases ***
+Addition Test
+    ${result}  Add  2  3
+    Should Be Equal  ${result}  5
+
+Subtraction Test
+    ${result}  Subtract  10  4
+    Should Be Equal  ${result}  6
+
+# to run -> robot test_math.robot
+
