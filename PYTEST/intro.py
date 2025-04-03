@@ -12,10 +12,10 @@
 import math
 def test_sqrt():
     num = 25
-    assert math.sqrt(num) == 5
+    assert math.sqrt(num) == 5 
 def test_square():
     num = 7
-    assert 7*7 == 40
+    assert 7*7 == 40, " this test will fail because 7*7 is not equal to 40"
 def tesequality():
     assert 10 == 11
 # run with command pytest intro.py -k test_square -rA # -k is used to run a specific test case in the file, -rA is used to show all the test results including passed, failed and skipped tests.
@@ -192,7 +192,7 @@ def test_failed_2():
     assert 2 == 3
 def test_failed_3():
     assert 3 == 4
-# to run the test, use the command: pytest -v test_stop_after_n_failures.py maxfail=2(after 2 failures, the test suite will stop)
+# to run the test, use the command: pytest -v test_stop_after_n_failures.py --maxfail=2(after 2 failures, the test suite will stop)
 
 
 ##Pytest - HTML Reports
