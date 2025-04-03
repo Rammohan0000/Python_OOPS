@@ -364,7 +364,6 @@ def single_occurance(lst):
 lst = [1,4,4,4,2,2,2]
 print(single_occurance(lst))
         
-
 # add 1 at the end of the list
 def solve(lst):
     lst[-1] += 1
