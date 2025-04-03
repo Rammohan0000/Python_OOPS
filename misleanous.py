@@ -371,3 +371,8 @@ def solve(lst):
 lst = [1,2,3,4]
 x = solve(lst)
 print(x) # 1,2,3,5
+
+# remove char a by ord value
+text = ['ab', 'abc', 'abcd', 'abcde']
+new_text = [''.join(char for char in word if ord(char) != ord('a')) for word in text]
+print(new_text)
