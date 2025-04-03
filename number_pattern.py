@@ -82,3 +82,30 @@ for i in range(n):
         print(p, end = " ")
         p += 1
     print()
+
+#1 
+#2 2 
+#3 3 3 
+#4 4 4 4 
+#5 5 5 5 5
+n = 5
+for i in range(n):
+    p = i +1
+    for j in range(i+1):
+        print(p, end=' ')
+    print( )   
+
+'''
+1 
+2 3 
+3 4 5 
+4 5 6 7 
+5 6 7 8 9'''
+n = 5
+for i in range(n):
+    p = i + 1
+    for j in range(i+1):
+        print(p, end=' ')
+        p += 1
+    print()
+    
