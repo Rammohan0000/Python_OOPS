@@ -92,6 +92,19 @@ pattern = r"\d{4}-\d{2}-\d{2}"
 dates = re.findall(pattern, text)
 print(dates)
 
+# without using regex
+def extract_dates(text):
+    words = text.split()  # Split text into words
+    dates = []  
+    for word in words:
+        parts = word.split('-')  # Check if it contains '-'
+        if len(parts) == 3 and all(part.isdigit() for part in parts):  # Ensure all parts are digits
+            dates.append(word)  # Append valid date   
+    return dates
+text = "Today's date is 2024-12-19 and yesterday was 2024-12-18."
+dates = extract_dates(text)
+print(dates)
+
 # using finditer()
 import re
 text = "apple, banana, grape, mango, pineapple"
@@ -105,7 +118,7 @@ pattern = r"(?P<day>\d{2})-(?P<month>\d{2})-(?P<year>\d{4})"
 match = re.search(pattern, "19-12-2024")
 if match:
     print(match.group("day"), match.group("month"), match.group("year"))
-
+    
 # email validation
 email = "test.email@domain.com"
 pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
@@ -224,3 +237,29 @@ for detail in details:
     print(f"Keys: {detail.keys()}")
     print(f"Values: {detail.values()}")
     print(f"Items: {detail.items()}")
+
+# extract words which are ending with vowels
+import re
+def vowels(inputs):
+    pattern = re.compile(r'[aeiou]$')
+    matches = [word for word in inputs if pattern.search(word)]
+    return matches
+inputs = ['cat', 'dog', 'free', 'tree']
+print(vowels(inputs))
+
+# extract words which are starting with vowels
+import re
+inputs = ['ct', 'dog', 'apple', 'orange']
+out_vowels = []
+out_conso = []
+pattern = re.compile(r'[aeiouAEIOU]')  # Pattern to check if a word contains at least one vowel
+
+for word in inputs:
+    if pattern.search(word):  # If a vowel is found in the word
+        out_vowels.append(word)
+    else:
+        out_conso.append(word)
+
+print("Words with vowels:", out_vowels)
+print("Words with only consonants:", out_conso)
+

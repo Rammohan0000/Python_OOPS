@@ -98,3 +98,101 @@ for detail in details:
     print(f"Values: {detail.values()}")
     print(f"Items: {detail.items()}")
 
+# without regex
+def status(interface_data):
+    details = []
+    for line in interface_data.strip().split("\n"):
+        parts = line.split()  # Split by whitespace
+        if len(parts) == 3:  # Ensure valid line structure
+            interface, ip, state = parts  # Unpack values
+            if state.lower() == "up":  # Check if state is "up"
+                details.append({"interface": interface, "ip": ip, "state": state})
+    return details
+interface_data = '''
+gigabitethernet0/1  192.168.1.1   up
+gigabitethernet0/2  192.168.1.2   down
+gigabitethernet0/3  192.168.1.3   down
+gigabitethernet0/4  192.168.1.4   up
+'''
+details = status(interface_data)
+for detail in details:
+    print(f"Interface: {detail['interface']}, IP: {detail['ip']}, State: {detail['state']}")
+
+
+# wipro question extract the peer address and state from the given output.
+import re
+
+out = '''===============================================================================
+BGP Neighbor
+===============================================================================
+-------------------------------------------------------------------------------
+Peer  : 10.10.1.1
+Group : igp
+-------------------------------------------------------------------------------
+Peer AS              : 65001            Peer Port            : 51580
+Peer Address         : 10.10.1.1
+Local AS             : 65002            Local Port           : 179
+Local Address        : 10.10.1.2
+Peer Type            : External         
+State                : Established      Last State           : Established
+Last Event           : recvKeepAlive   
+Last Error           : Cease (Connection Collision Resolution)
+Local Family         : IPv4
+Remote Family        : IPv4
+Hold Time            : 90               Keep Alive           : 30'''
+# Regex patterns to match Peer Address and State
+peer_address_pattern = r"Peer Address\s+:\s+(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})"
+state_pattern = r"State\s*:\s*(\S+)"
+keep_alive_pattern = r"Keep Alive\s+:\s+(\d{1,2}+)"
+# Extract values using regex
+peer_address_match = re.search(peer_address_pattern, out)
+state_match = re.search(state_pattern, out)
+keep_match = re.search(keep_alive_pattern, out)
+print(peer_address_match)
+print(state_match)
+print(keep_match)
+# Store results in dictionary
+bgp_details = {
+    "Peer Address": peer_address_match.group(1) if peer_address_match else None,
+    "State": state_match.group(1) if state_match else None,
+    "Keep Alive": keep_match.group(1) if keep_match else None
+}
+# Print the extracted details
+print(bgp_details)
+
+# without regex
+out = '''===============================================================================
+BGP Neighbor
+===============================================================================
+-------------------------------------------------------------------------------
+Peer  : 10.10.1.1
+Group : igp
+-------------------------------------------------------------------------------
+Peer AS              : 65001            Peer Port            : 51580
+Peer Address         : 10.10.1.1
+Local AS             : 65002            Local Port           : 179
+Local Address        : 10.10.1.2
+Peer Type            : External         
+State                : Established      Last State           : Established
+Last Event           : recvKeepAlive   
+Last Error           : Cease (Connection Collision Resolution)
+Local Family         : IPv4
+Remote Family        : IPv4
+Hold Time            : 90               Keep Alive           : 30'''
+def extract_details(out):
+    lines = out.split("\n")  # Split the text into lines
+    bgp_details = {}
+    for line in lines:
+        parts = line.split(":")  # Split each line by `:`
+        if len(parts) > 1:
+            key = parts[0].strip()
+            value = parts[1].strip()
+
+            if key == "Peer Address":
+                bgp_details["Peer Address"] = value
+            elif key == "Local AS":
+                bgp_details["Local AS"] = value
+            elif key.startswith("State"):  # To avoid Last State confusion
+                bgp_details["State"] = value.split()[0]  # Take only the first word
+    return bgp_details
+print(extract_details(out))

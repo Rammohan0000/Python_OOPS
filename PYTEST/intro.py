@@ -12,16 +12,16 @@
 import math
 def test_sqrt():
     num = 25
-    assert math.sqrt(num) == 5
-def testsquare():
+    assert math.sqrt(num) == 5 
+def test_square():
     num = 7
-    assert 7*7 == 40
+    assert 7*7 == 40, " this test will fail because 7*7 is not equal to 40"
 def tesequality():
     assert 10 == 11
-
+# run with command pytest intro.py -k test_square -rA # -k is used to run a specific test case in the file, -rA is used to show all the test results including passed, failed and skipped tests.
 # run the test by running the command: pytest intro.py , if we use file_name as test, no need to mention file name explicitly, we can use pytest command to run the test
 # The function tesequality is not executed because pytest will not consider it as a test since its name is not of the format test*.   
-# use pytest -v intro.py to check verbose output
+# use pytest -v intro.py -rA to check verbose output
 # use pytest -v -s intro.py to check verbose output with print statements
 
 ##Execute subset of test cases
@@ -148,6 +148,8 @@ def test_multiplication_11(num, output):
 # Sometimes, we may want to skip some tests or mark them as xfail,  but it will not be considered as part failed.
 # pytest.mark.skip is used to skip the test.
 # pytest.mark.xfail is used to mark the test as xfail.
+# x represents that the test is marked as expected to fail (XFAIL).
+# it's not counted as a real failure.
 # Example:
 # test_xfail.py
 import pytest
@@ -190,7 +192,7 @@ def test_failed_2():
     assert 2 == 3
 def test_failed_3():
     assert 3 == 4
-# to run the test, use the command: pytest -v test_stop_after_n_failures.py maxfail=2(after 2 failures, the test suite will stop)
+# to run the test, use the command: pytest -v test_stop_after_n_failures.py --maxfail=2(after 2 failures, the test suite will stop)
 
 
 ##Pytest - HTML Reports
@@ -221,3 +223,96 @@ def test_parallel_2():
     time.sleep(5)
     assert 2 == 2
 # to run the test, use the command: pytest -v -n 2 test_parallel.py
+
+# pytest-fixtures(scope='function')
+# it is default
+# It is recreated for each test function within a test file
+# example
+import pytest
+@pytest.fixture(scope="function")
+def setup_function():
+    print("\nSetup: Function scope fixture")
+    return "Function Scope"
+def test_one(setup_function):
+    print("Test 1:", setup_function)
+    assert setup_function == "Function Scope"
+def test_two(setup_function):
+    print("Test 2:", setup_function)
+    assert setup_function == "Function Scope"
+
+# scope = 'class
+# the fixture is executed oncce per test class
+# it is shared among all test methods in that class
+# The fixture runs once for the entire class.
+import pytest
+@pytest.fixture(scope="class")
+def setup_class():
+    print("\nSetup: Class scope fixture")
+    return "Class Scope"
+class TestExample:
+    def test_one(self, setup_class):
+        print("Test 1:", setup_class)
+        assert setup_class == "Class Scope"
+    def test_two(self, setup_class):
+        print("Test 2:", setup_class)
+        assert setup_class == "Class Scope"
+
+# pytest(scope='module')
+# The fixture is executed once per test module.
+# It is shared among all test functions in the module.
+# The fixture runs once for the entire module.
+import pytest
+@pytest.fixture(scope="module")
+def setup_module():
+    print("\nSetup: Module scope fixture")
+    return "Module Scope"
+def test_one(setup_module):
+    print("Test 1:", setup_module)
+    assert setup_module == "Module Scope"
+def test_two(setup_module):
+    print("Test 2:", setup_module)
+    assert setup_module == "Module Scope"
+
+#How can you run only failed tests from the previous run?
+# Use the --lf (last failed) flag:
+# pytest --lf
+
+# conftest.py
+# conftest.py is used to define fixtures or hooks that are shared across multiple test files.
+# Create a new file conftest.py and add the below code into it
+# conftest.py
+import pytest
+@pytest.fixture
+def input_value():
+   input = 39
+   return input
+# Now, we can use the fixture in multiple test files.
+# test_sample(remove fixture from the test file)
+def test_divisible_by_3(input_value):
+    assert input_value % 3 == 0
+def test_divisible_by_6(input_value):
+    assert input_value % 6 == 0
+# Create a new file test_div_by_13.py −
+# test_div_by_13.py
+def test_divisible_by_13(input_value):
+    assert input_value % 13 == 0
+# Now, we can run the tests in both the files using the command: pytest -v
+# The fixture input_value is shared between the two test files.
+# pytest -k "test_divisible_by_3" test_div_by_13.py is used to run a specific test case in the file
+
+
+# Pytest hooks
+# Hooks are special functions to customize Pytest behavior. They start with pytest_
+# defined in conftest.py
+# pytest_configure(config)
+   # this hook is called when pytest starts
+   # used to configure global settings
+# conftest.py
+import pytest
+def pytest_configure(config):
+    print("\n==> Pytest is starting with custom configuration!")
+    
+#How do you debug a failing test in Pytest?
+#Use the --pdb flag to enter interactive debugging mode:
+#pytest --pdb
+

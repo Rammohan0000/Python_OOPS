@@ -129,6 +129,13 @@ dict4 = {'rohit' : 'odi', 'age': 37}
 dict5 = {v:k for k,v in dict4.items()}
 print(dict5)
 
+#2nd method
+dict4 = {'rohit': 'odi', 'age': 37}
+dict5 = {}
+for key, value in dict4.items():
+    dict5[value] = key  # Swap key and value
+print(dict5)
+
 '''
 Method	      Description
 clear()	      Removes all the elements from the dictionary

@@ -11,6 +11,19 @@ def occurance(str):
 str = input("Enter a string: ")
 print(occurance(str))
 
+# list with unique elements with first element
+def occurrence(lst):
+    freq_dict = {}
+    for item in lst:
+        if item in freq_dict:
+            freq_dict[item] += 1
+        else:
+            freq_dict[item] = 1
+    unique_keys = [key for key, value in freq_dict.items() if value == 1]   
+    return unique_keys[0]
+mylist = [2, 5, 6, 7, 8, 9, 10, 5, 2, 6]
+print(occurrence(mylist))
+
 # most occurring character                                                 
 def new(s):
     most = max(s, key = s.count)
@@ -19,10 +32,35 @@ s = input("Enter the String: ")
 result = new(s)
 print(f"the most occured character is '{result[0]}' with frequency of {result[1]} ")
 
+#without max function
+def new(s):
+    freq_dict = {}
+    most_freq, max_count = None, 0
+    for char in s:
+        freq_dict[char] = freq_dict.get(char, 0) + 1
+        if freq_dict[char] > max_count:
+            most_freq,max_count = char, freq_dict[char]
+    return most_freq, max_count
+s = input("Enter the String: ")
+result = new(s)
+print(f"the most occured character is '{result[0]}' with frequency of {result[1]} ")
+
 #longest word
 def find_longest_word(sentence):
-    words = sentence.split()  # Split the sentence into words
-    longest_word = max(words, key=len)  # Find the word with the maximum length
+    words = sentence.split()  
+    longest_word = max(words, key=len) 
+    return longest_word
+sentence = "Python programming is both fun and challenging"
+longest = find_longest_word(sentence)
+print(f"The longest word is: {longest}")
+
+#without using in-build functions
+def find_longest_word(sentence):
+    words = sentence.split()  
+    longest_word = "" 
+    for word in words:  
+        if len(word) > len(longest_word):  
+            longest_word = word  
     return longest_word
 sentence = "Python programming is both fun and challenging"
 longest = find_longest_word(sentence)
@@ -30,8 +68,8 @@ print(f"The longest word is: {longest}")
 
 #shortest word  
 def find_shortest_word(sentence):
-    words = sentence.split()  # Split the sentence into words
-    shortest_word = min(words, key=len)  # Find the word with the minimum length
+    words = sentence.split()  
+    shortest_word = min(words, key=len)  
     return shortest_word
 sentence = "Python programming is both fun and challenging" 
 shortest = find_shortest_word(sentence)
@@ -42,6 +80,16 @@ def count_words(sentence):
     words = sentence.split()  # Split the sentence into words
     return len(words)
 sentence = "Python programming is both fun and challenging" 
+print(f"The number of words in the sentence is: {count_words(sentence)}")
+
+#without len function
+def count_words(sentence):
+    words = sentence.split()  # Split the sentence into words
+    count = 0  # Initialize counter
+    for _ in words:  # Iterate over words
+        count += 1   # Increment counter
+    return count
+sentence = "Python programming is both fun and challenging"
 print(f"The number of words in the sentence is: {count_words(sentence)}")
 
 #swipe first and last character of a string
@@ -168,4 +216,112 @@ print(ord(a))
 # ASCII value to character
 a = 65
 print(chr(a))
+
+# find sum of two numbers equal to target
+def two_numbers(nums, target):
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return nums[i], nums[j]
+    return "No such numbers found"
+nums = [10,20,10,40,50,60,70]
+target = 50
+print(two_numbers(nums, target))
+
+# sorting a list of tupeles based on the second element
+def sort_list(tuples):
+    return sorted(tuples, key = lambda x: x[1]) 
+tuples = [(1, 2), (3, 4), (1, 1), (5, 6), (7, 8), (1, 3)]
+print(sort_list(tuples))
+
+# sorting a tuple without using in-build functions
+def sort_tuple(tuples):
+    for i in range(len(tuples)):
+        for j in range(i+1, len(tuples)):
+            if tuples[i][1] > tuples[j][1]:
+                tuples[i], tuples[j] = tuples[j], tuples[i]
+    return tuples
+tuples = [(1, 2), (3, 4), (1, 1), (5, 6), (7, 8), (1, 3)]
+print(sort_tuple(tuples))
+
+# sorting without using in-build functions
+def sort_list(nums):
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            if nums[i] > nums[j]:
+                nums[i] , nums[j] = nums[j], nums[i]
+    return nums
+nums = [10, 20, 5, 6, 7, 8, 9]
+print(sort_list(nums))
+
+# sorting a string in alphabetical order
+def sort_string(str):
+    return ''.join(sorted(str))     
+str = input("Enter a string: ")
+print(sort_string(str))
+
+# sorting a string without using in-build functions
+def sort_string(str):
+    str = list(str)
+    for i in range(len(str)):
+        for j in range(i+1, len(str)):
+            if str[i] > str[j]:
+                str[i], str[j] = str[j], str[i]
+    return ''.join(str)
+str = input("Enter a string: ")
+print(sort_string(str))
+
+# sorting a string in reverse order
+def sort_string(str):
+    return ''.join(sorted(str, reverse = True)) 
+str = input("Enter a string: ")
+print(sort_string(str)) 
+
+# find the sum of three numbers equal to target
+def three_numbers(nums, target):
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            for k in range(j+1, len(nums)):
+                if nums[i] + nums[j] + nums[k] == target:
+                    return nums[i], nums[j], nums[k]
+    return "No such numbers found"
+nums = [10,20,10,40,50,60,70]
+target = 70
+print(three_numbers(nums, target))
+
+# sorting dictionary with use of in-build functions
+def sort_dict(dict):
+    return {k: v for k, v in sorted(dict.items())}
+dict = {1: 10, 4: 40, 2: 20, 3: 30}
+
+# sorting dictionary based on values
+def sort_dict(dict):
+    return {k: v for k, v in sorted(dict.items(), key = lambda x: x[1])}
+dict = {1: 10, 4: 40, 2: 20, 3: 30}
+print(sort_dict(dict))
+
+# sorting without use of in-build functions
+def sort_dict(dict):
+    keys = list(dict.keys())
+    for i in range(len(keys)):
+        for j in range(i+1, len(keys)):
+            if dict[keys[i]] > dict[keys[j]]:
+                keys[i], keys[j] = keys[j], keys[i]
+    return {k: dict[k] for k in keys}
+dict = {1: 10, 4: 40, 2: 20, 3: 30}
+print(sort_dict(dict))
+
+# sorting dictionary based on values
+def sort_dict(data):
+    items = list(data.items())
+    for i in range(len(items) - 1):
+        for j in range(len(items) - i - 1):
+            if items[j][1] > items[j + 1][1]:  # Compare values
+                items[j], items[j + 1] = items[j + 1], items[j]  # Swap tuples    
+    return dict(items)
+data = {1: 10, 4: 40, 2: 20, 3: 30}
+print(sort_dict(data))
+
+
+
 

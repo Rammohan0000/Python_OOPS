@@ -35,6 +35,40 @@ def second_largest(lst):
 lst = list(map(int, input("Enter the list of numbers: ").split()))
 print("2nd largest:", second_largest(lst))
 
+#wipro 2nd question
+sentence = '''Peter Piper picked a peck of pickled peppers
+A peck of pickled peppers Peter Piper picked
+If Peter Piper picked a peck of pickled peppers'''
+words = sentence.split()
+word_counts = {}
+for word in words:
+    word_counts[word] = word_counts.get(word, 0) + 1
+print("Word count:", word_counts)
+#unique values
+unique_words = set(words)
+print("Unique words:", unique_words)
+
+#first and second higheest calculation
+def highest_paid(employees_data):
+    most = max(employees_data, key=employees_data.get)
+    sorted_dict = sorted(employees_data.items(), key = lambda x:x[1],reverse=True)
+    return  most,sorted_dict[1][0]
+employees_data = {
+    "Alice": 60000,
+    "Bob": 75000,
+    "Charlie": 50000,
+    "David": 90000
+}
+s=highest_paid(employees_data)
+print(f"the first highest_paid employee was {s[0]} and second highest paid employee was {s[1]}")
+
+# find first non repeated value in a list
+mylist = [2, 5, 6, 7, 8, 9, 10, 5, 2, 6]
+for num in mylist:
+    if mylist.count(num) == 1:
+        print(num)
+        break
+
 #count vowels in a string
 def count_vowels(s):
     vowels = 'aeiouAEIOU'
@@ -56,6 +90,26 @@ def replace_vowels(s):
     return result
 s = input("Enter a string: ")
 print("String after replacing vowels:", replace_vowels(s))
+
+#camel to snake
+def camel_to_snake(s):
+    result = [s[0].lower()]
+    for char in s[1:]:
+        if char.isupper():
+            result.append('_')
+            result.append(char.lower())
+        else:
+            result.append(char)
+    return ''.join(result)
+input_string = 'PythonExercises'
+output_string = camel_to_snake(input_string)
+print(output_string)
+
+#replace_with$
+word = 'Python_Exercises_are_difficult'
+parts = word.split('_')
+result = '$'.join(parts)
+print(result)
 
 # swap first and last element
 def swap_first_last(lst):
@@ -83,6 +137,20 @@ s1 = input("Enter the 1st word: ")
 s2 = input("Enter the 2nd word: ")
 print("Anagram:", is_anagram(s1, s2))
 
+def is_anagram(s1, s2):
+    if len(s1) != len(s2):
+        return False
+    char_count1 = {}
+    char_count2 = {}
+    for char in s1:
+        char_count1[char] = char_count1.get(char, 0) + 1
+    for char in s2:
+        char_count2[char] = char_count2.get(char, 0) + 1
+    return char_count1 == char_count2
+s1 = input("Enter the 1st word: ")
+s2 = input("Enter the 2nd word: ")
+print("Anagram:", is_anagram(s1, s2))
+
 # find a word which is greater than given length
 def find_long_words(lst, n):
     return [word for word in lst if len(word) > n]
@@ -102,6 +170,30 @@ def word_count(sentence):
     return word_counts
 sentence = input("Enter a sentence: ")
 print("Word count:", word_count(sentence))
+
+#converting string into dictionary
+def string_to_dict(s):
+    return dict(item.split(':') for item in s.split(','))
+s = input("Enter a string: ")
+print("Dictionary:", string_to_dict(s))
+
+#2nd method
+s = "name:Alice,age:25"
+pairs = s.split(",")
+d = {}
+for pair in pairs:
+    key, value = pair.split(":")
+    d[key] = value
+print(d)
+
+# to find the length of the last word in a string
+def length_last_word(s):
+    words = s.split()
+    if words:
+        return len(words[-1])
+    return 0
+s = input("Enter a string: ")
+print("Length of the last word:", length_last_word(s))
 
 #count particular word in a sentence
 def count_word_occurrences(sentence, word):

@@ -15,6 +15,18 @@ def occurances(lst):
 lst = list(map(int,input("enter the nos: ").split(' ')))
 print(occurances(lst))
         
+#armstrong number
+def is_armstrong(number):
+    num_str = str(number)  # Convert number to string
+    num_digits = len(num_str)  # Count number of digits
+    armstrong_sum = sum(int(digit) ** num_digits for digit in num_str)  # Compute Armstrong sum
+    return armstrong_sum == number  # Check if Armstrong sum matches original number
+num = int(input("Enter a number: "))
+if is_armstrong(num):
+    print(f"{num} is an Armstrong number!")
+else:
+    print(f"{num} is NOT an Armstrong number.")
+      
 # write a python program that takes integers between 0 to 999 and return true if which all differ by 10 from one another
 def differ_by_10(lst):
     for i in range(len(lst)-1):
@@ -59,6 +71,71 @@ def split_string(s):
 s = input("enter the string: ")
 print(split_string(s))
 
+#find substring in a string
+def find_substring(s,sub):
+    return s.find(sub)
+s = input("enter the string: ")
+sub = input("enter the substring: ")
+print(find_substring(s,sub))
+
+#without using find
+def find_substring(s,sub):
+    for i in range(len(s)-len(sub)+1):
+        if s[i:i+len(sub)] == sub:
+            return i
+    return -1
+s = input("enter the string: ") 
+sub = input("enter the substring: ")
+print(find_substring(s,sub))
+
+
+# find abc in a string
+import re
+text = 'abcxyzsdghiueabcxyzadjnsadkjhefaoiuahaaabaabaabababaxyxyxyxasdaaaaabcabcxyzxyz'
+matches = list(re.finditer('abc', text))
+for match in matches:
+    print(f"Found 'abc' at: {match.start()}")
+for idx, char in enumerate(text):
+    if char == 'a':
+        print(f"The index of 'a' is: {idx}")
+
+#without regex
+input_str = 'abacdeifabcedcjhfuabc'
+pattern = 'abc'
+index = input_str.find(pattern)  # First occurrence
+while index != -1:
+    print(f"{pattern} has occurred at {index} and ends at {index + len(pattern)}")
+    index = input_str.find(pattern, index + 1)  # Find next occurrence
+
+# find the first non-repeating character in a string
+def first_non_repeating_char(s):
+    for char in s:
+        if s.count(char) == 1:
+            return char
+    return None
+s = input("enter the string: ")
+print(first_non_repeating_char(s))
+
+# find second most repeated character in a string
+def second_most_repeated_char(s):
+    char_count = {}
+    for char in s:
+        if char in char_count:
+            char_count[char] += 1
+        else:
+            char_count[char] = 1
+    sorted_char_count = sorted(char_count.items(), key=lambda x: x[1], reverse=True)
+    return sorted_char_count[1][0]
+s = input("enter the string: ")
+print(second_most_repeated_char(s))
+
+# find second largest word in  a string
+def second_largest_word(s):
+    words = s.split()
+    words.sort(key=len)
+    return words[-2]
+s = input("enter the string: ")
+print(second_largest_word(s))
 
 # write a python program that contains exactly 4 distinct values across the list such that no value is repeated more than once consecutively among the first 20 numbers
 def test(nums):
@@ -102,6 +179,26 @@ def most_unique_characters(strs):
     return max(strs, key = lambda s: len(set(s)))
 strs = ['cat', 'catatatatctsa', 'abcdefhijklmnop', '124259239185125', '', 'foo', 'unique']
 print(most_unique_characters(strs))
+
+#without using set and max function
+def count_unique_chars(s):
+    unique_chars = []
+    for char in s:
+        if char not in unique_chars:
+            unique_chars.append(char)
+    return len(unique_chars)
+def most_unique_characters(strs):
+    max_unique_str = ""
+    max_unique_count = 0
+    for s in strs:
+        unique_count = count_unique_chars(s)
+        if unique_count > max_unique_count:
+            max_unique_count = unique_count
+            max_unique_str = s
+    return max_unique_str
+strs = ['cat', 'catatatatctsa', 'abcdefhijklmnop', '124259239185125', '', 'foo', 'unique']
+print(most_unique_characters(strs))
+
 
 # write a python program to return two digit numbers only from a list
 def two_digit_numbers(nums):
@@ -193,4 +290,59 @@ def test(strs: list[str]) -> list[str]:
     return [s.upper() for s in strs]
 result = test(['hello', 'world'])
 print(result)
+
+# find words with vowels and consonants
+inputs = ['sky', 'apple', 'tree', 'rhythm', 'free', 'cat', 'gym']
+out_vowels = []
+out_conso = []
+vowels = 'aeiouAEIOU'
+for word in inputs:
+    if any(char in vowels for char in word):  
+        out_vowels.append(word)
+    else:
+        out_conso.append(word)
+print("Words with vowels:", out_vowels)
+print("Words with only consonants:", out_conso)
+
+#2nd highest number
+l = [1,7,3,2,7,2]
+
+freq_dict = {}
+
+for num in l:
+    freq_dict[num] = freq_dict.get(num,0) + 1 
+print(freq_dict)  
+most_freq, max_count = None,0
+if freq_dict[num] > max_count:
+    most_freq, max_count = num , freq_dict[num] 
+    print(most_freq, max_count)
+x = sorted(freq_dict.items(), key = lambda x: x[1], reverse = 'True')
+print(x[1][0])
+
+# find the sum of two numbers equal to target
+def two_sum(nums, target):
+    for i in range(len(nums)):
+        for j in range(i+1,len(nums)):
+            if nums[i] + nums[j] == target:
+                return [i,j] # for indices
+                return [nums[i],nums[j]] # for values
+    return None
+nums = [2,7,11,15]
+target = 9
+print(two_sum(nums,target))
+
+#Sorting numbers without using sorted
+l = [1, 4, 5, 3, 2]
+
+# Bubble Sort logic
+for i in range(len(l)):
+    for j in range(len(l) - i - 1):
+        if l[j] > l[j + 1]:  # Swap if elements are out of order
+            l[j], l[j + 1] = l[j + 1], l[j]
+
+print("Sorted list:", l)
+
+
+
+
 
