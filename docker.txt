@@ -1,0 +1,215 @@
+App Development Before Containers:-
+->installing different dependenices
+->differ from os to os for multiple developers to access 
+->high chances of failure
+->high memory usage and storage
+ 
+Appn Development After Containers:-
+->own isolated OS linux based
+->Minimal OS
+->not required to install dependencies
+->packaged with all dependencies in a container
+ 
+Docker provides single platform to develop application for developers and operations team so that they can share single repo to install all dependencies as a package, whenever they need, just with one command we can able to fetch/pull the container from anywhere
+ 
+Docker Image: A Docker image is the blueprint for a container. It is a read-only template that includes the application code, dependencies, and instructions for running the application.
+ 
+Docker Container: A container is a running instance of an image. While an image is static, a container is dynamic and can be started, stopped, or deleted.
+-> Containers provide a consistent environment for applications to run, ensuring that they perform the same regardless of where they are deployed.
+-> Container is a running env for IMAGE
+-> Layers of images
+-> Linux Based Images(Small Size)
+ 
+Docker Container vs Virtual Machine:-
+Docker containers are faster, more resource-efficient, and better suited for modern, microservices-based applications, while virtual machines provide stronger isolation and are ideal for running multiple OS instances on the same hardware.
+ 
+Use Containers When:
+->You are working with microservices or CI/CD pipelines.
+->You want easy portability across different development, testing, and production environments.
+->You need to scale applications quickly and efficiently.
+ 
+Use Virtual Machines When:
+->You require full isolation with a separate OS for each environment.
+->You are running applications that require different operating systems on the same host.
+->You are hosting legacy applications that cannot be easily containerized.
+->Security and deep isolation are essential requirements.
+ 
+Basic Commands:-
+-> docker --version
+-> docker info
+-> docker status
+-> docker run
+-> docker pull
+-> docker images
+-> docker run -d / docker run -it
+-> docker ps / docker ps -a (for both running and non-running conmtainers)
+-> docker start / stop
+-> docker logs <conatiner-id> or <container-name>
+-> docker rm <conatiner -id>
+-> docker restart <container-name>
+-> docker rmi <image-name>
+-> docker inspect <container-id>
+-> docker history <image-id>
+ 
+How multiple containers can run on your host machine
+-> by using different port numbers associated with containers we need to bind those port numbers with host machine
+-> make sure we dont use same port numbers on host machine
+*How to bind?
+-> docker run -p6000(host_port):6379(redis_server)
+-> to verify docker ps
+-> docker run -p6000:6379 -d redis
+-> docker run -p6001:6379 -d redis:4.2
+-> docker ps
+ 
+*How to customize a name for a docker container?
+-> docker run -d -p6000:6379 --name redis-older redis:4.2
+-> docker ps
+ 
+ 
+**Docker Exec**
+->used to run commands inside an already running Docker container. This allows you to interact with the container in real time, enabling tasks like debugging, monitoring, and performing administrative functions without needing to restart or modify the container
+-> access a container shell
+docker exec -it <container_name_or_id> /bin/bash
+-> inspect Container State
+docker exec <container_name_or_id> ps aux
+ 
+*Difference between docker run vs docker exec
+->docker run is for creating new containers, while docker exec is for interacting with already running containers
+ 
+*Difference between docker run vs docker start
+->docker run is for creating fresh container instances, while docker start is for restarting existing, stopped containers.
+ 
+Docker Networks
+->Docker networking allows containers to communicate with each other, the host, and external networks. Docker provides several networking options to connect containers and manage traffic, depending on use cases and deployment needs.
+ 
+Docker Network Types:-
+ 
+Bridge Network:-
+The default network for standalone containers if no network is specified.
+Containers connected to the same bridge network can communicate with each other using container names or IP addresses, but they’re isolated from other containers on different bridge networks or the host network.
+This network is often used for single-host configurations or simple setups.
+->docker network create my_bridge_network
+docker run --network my_bridge_network --name container1 my_image
+ 
+Host Network:-
+The container shares the host’s network stack, meaning it uses the same IP address and ports as the host.
+Useful when performance is a priority, as it removes the overhead of Docker’s network virtualization, or when the container needs access to the host’s network resources directly.
+Only available for Linux and not ideal for production as it has security limitations due to lack of isolation.
+->docker run --network host my_image
+ 
+Overlay Network:-
+Allows containers to communicate across different Docker hosts, typically used in Docker Swarm or Kubernetes.
+Useful for multi-host or distributed applications since it provides a secure communication channel for containers on separate hosts.
+To use this, Docker’s Swarm mode needs to be initialized.
+Example:
+docker network create -d overlay my_overlay_network
+docker service create --network my_overlay_network my_service
+ 
+Macvlan Network
+Assigns a unique MAC address to each container, allowing containers to appear as physical devices on the network.
+Containers can directly communicate with external networks using unique IPs, suitable for legacy applications that expect each service to have its own IP address.
+Typically used when containers need direct access to the physical network, like in IoT or network testing environments.
+Example:
+->docker network create -d macvlan --subnet=192.168.1.0/24 --gateway=192.168.1.1 -o parent=eth0 my_macvlan_network
+->docker run --network my_macvlan_network --name container1 my_image
+ 
+None Network:-
+Containers attached to the none network have no network access, isolating them completely.
+Useful for containers that do not need network access or if you want to handle networking manually.
+Example:
+docker run --network none my_image
+ 
+Managing Docker Networks
+Docker provides commands to create, list, and inspect networks.
+ 
+List Networks:
+->docker network ls
+ 
+Inspect Network:
+->docker network inspect <network_name>
+ 
+Create Network:
+->docker network create --driver <network_type> <network_name>
+ 
+Remove Network:
+->docker network rm <network_name>
+ 
+Connecting Containers to a Network:
+To connect a running container to a network:
+->docker network connect <network_name> <container_name>
+To disconnect a running container from a network:
+->docker network disconnect <network_name> <container_name>
+ 
+Lifecycle of docker container:-
+ 
+1. Build a Docker file
+2. Image
+3. Container
+4. Docker Engine(It provides the environment, tools, and management capabilities to build, run, and scale containers, facilitating containerized applications to operate efficiently)
+ 
+Stages:-
+Build a docker file 
+|
+send to docker engine
+|
+docker engine creates a image
+|
+execute image into a container.
+ 
+Procedure to build a dockerfile:-
+->need ubuntu 20.04lts
+-> sudo apt update
+-> sudo apt install docker.io
+-> sudo systemctl start docker
+-> sudo systemctl enable docker
+-> docker --version
+ 
+Building docker image:-
+-> mkdir workspace
+-> cd workspace
+-> vim index.html
+<html>
+<body>
+<h1>HelloWorld
+No table of contents entries found.
+d..!! I am inside container..!!</h1>
+</body>
+</html>
+->create a empty file titled dockerfile
+     vim docker
+->add conmtent to dockerfile
+    FROM ubuntu:16.04
+ 
+   RUN apt-get update -y
+   RUN apt-get install -y apache2
+   RUN chown -R www-data:www-data /var/www/
+   ENV APACHE_RUN_USER www-data
+   ENV APACHE_RUN_GROUP www-data
+   ENV APACHE_LOG_DIR /var/log/apache2
+   ENV APACHE_LOCK_DIR /var/lock/apache2 
+   ENV APACHE_PID_FILE /var/run/apache2.pid
+   ADD index.html /var/www/html/
+   EXPOSE 80
+   ENTRYPOINT ["/usr/sbin/apache2ctl"]
+   CMD ["-D","FOREGROUND"]
+-> docker build -t webserver:latest
+-> docker images
+-> docker run -itd -p 8080:80 webserver:latest
+-> open browser and type localhost:8080/
+ 
+**Docker Volume**
+Unlike data written to the container’s writable layer, which disappears when the container is removed, volumes provide a mechanism for storing data independently of the container’s lifecycle
+ 
+Why Use Docker Volumes?
+Data Persistence: Volumes keep data even when a container is removed, which is crucial for applications that require a persistent database or long-term storage.
+Data Sharing: Volumes can be shared between containers, enabling them to access and modify the same files.
+Performance: Volumes are optimized for I/O operations and generally perform better than storing data in the container’s file system.
+Backup and Restore: Volumes make it easier to back up and restore data because the data is stored outside the container’s layer.
+ 
+ 
+**Control Groups**
+->A Cgroup limits an application to a specific set of resources that allow the Docker engine to share
+available hardware resources to containers and optionally enforce limits and constraints
+->docker run -itd --pids-limit 6 alpine
+->docker run -d --name limited_container --cpus="1" --memory="256m" my_image
+-> docker status (to verify)
